@@ -13,13 +13,13 @@ public:
 	string title;
 	string author;
 	string publisher;
-	int date;
+	time_t date;
 	int qty;
 	double cost;
 	double price;
 
 	Book(long isbn, string title, string author, string publisher, double cost,
-			double price, int qty = 0, int date = time(0));
+			double price, int qty = 0, time_t date = time(0));
 };
 
 #endif

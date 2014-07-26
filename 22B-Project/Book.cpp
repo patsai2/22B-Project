@@ -1,11 +1,12 @@
 #include <string>
+#include <ctime>
 
 #include "Book.h"
 
 using namespace std;
 
 Book::Book(long isbn, string title, string author, string publisher, double cost,
-			double price, int qty, int date) {
+			double price, int qty, time_t date) {
 	this->isbn = isbn;
 	this->title = title;
 	this->author = author;
