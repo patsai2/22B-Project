@@ -63,6 +63,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Book.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
