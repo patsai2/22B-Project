@@ -1,4 +1,8 @@
+#include <string>
+
 #include "Book.h"
+
+using namespace std;
 
 Book::Book(long isbn, string title, string author, string publisher, double cost,
 			double price, int qty, int date) {
