@@ -4,22 +4,20 @@
 #include <string>
 #include <ctime>
 
-using namespace std;
-
 class Book
 {
 public:
 	long isbn;
-	string title;
-	string author;
-	string publisher;
-	int date;
+	std::string title;
+	std::string author;
+	std::string publisher;
+	time_t date;
 	int qty;
 	double cost;
 	double price;
 
-	Book(long isbn, string title, string author, string publisher, double cost,
-			double price, int qty = 0, int date = time(0));
+	Book(long isbn, std::string title, std::string author, std::string publisher,
+			double cost, double price, int qty = 1, time_t date = time(0));
 };
 
 #endif
