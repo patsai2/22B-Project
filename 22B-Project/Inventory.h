@@ -17,14 +17,14 @@ public:
 	~Inventory();
 	bool open(std::string file);
 	virtual void run();
-	const Book **getBooks();
+	const Book **getBooks();                //for monica's use
 	const Book **getBooksByTitle();
 	const Book **getBooksByQty();
 	const Book **getBooksByCost();
 	const Book **getBooksByAge();
 	int getSize();
 	void add(Book *book);
-	void remove(const Book *book, int qty);
+	void remove(const Book *book, int qty); //for monica's use
 };
 
 #endif
