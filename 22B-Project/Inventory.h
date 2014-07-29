@@ -9,11 +9,13 @@
 
 class Inventory : public Module
 {
+	std::fstream file;
 	std::vector<Book*> books;
 
 public:
 	~Inventory();
 	bool open(std::string file);
+	void close();
 	void run();
 	std::vector<const Book*> getBooks();
 	std::vector<const Book*> getBooksByTitle();

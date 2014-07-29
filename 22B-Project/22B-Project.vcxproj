@@ -73,6 +73,9 @@
     <ClInclude Include="Module.h" />
     <ClInclude Include="ReportsModule.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="books.tsv" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

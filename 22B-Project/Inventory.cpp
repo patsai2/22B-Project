@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <ctime>
 #include <vector>
 
@@ -10,7 +11,30 @@ using namespace std;
 
 Inventory::~Inventory()
 {
+	close();
 	for (size_t i = 0; i < books.size(); i++) delete books[i];
+}
+
+bool Inventory::open(string filename)
+{
+	file.open(filename);
+	if (!file.good()) {
+		file.close();
+		return false;
+	}
+
+	cout << filename << ":" << endl;
+	string line;
+	while (file.good()) {
+		getline(file, line);
+		cout << line << endl;
+	}
+	cout << endl;
+}
+
+void Inventory::close()
+{
+	file.close();
 }
 
 void Inventory::run()
@@ -125,7 +149,9 @@ void Inventory::remove(const Book *book, int qty)
 /*
 int main()
 {
-	Module *module = new Inventory();
+	Inventory inventory;
+	inventory.open("books.tsv");
+	Module *module = &inventory;
 	module->run();
 }
 */
