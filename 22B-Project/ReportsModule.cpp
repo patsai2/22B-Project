@@ -1,10 +1,13 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<ctime>
 #include "Inventory.h"
+#include"ReportsModule.h"
+
 using namespace std;
 
-int main(int argc, const char * argv[])
+void ReportsModule::run()
 {
 	int choice;
 	int forever = 1;
@@ -24,36 +27,45 @@ int main(int argc, const char * argv[])
 	cout << "     Enter Your Choice:            " << endl;
 	cin >> choice;
 	Inventory inventory;
+	vector <const Book*>books;
+
 	while (forever == 1)
 	{
 		switch (choice)
 		{
 		case 1:
-			const Book**list = inventory.getBooks();
+			books = inventory.getBooks();
+			break;
+
 		case 2:
+			break;
 
 		case 3:
-
+			break;
 		case 4: 
-			vector <const Book*>books = inventory.getBooksByQty();
+			books = inventory.getBooksByQty();
 			for (int i = 0; i < books.size(); i++)
 			cout << "There are " << books[i]->qty << " books called " << books[i]->title << "by " << books[i]->author <<"."<< endl;
+			break;
 		case 5:
-			vector <const Book*>books = inventory.getBooksByCost();
+			books = inventory.getBooksByCost();
 			for (int i = 0; i < books.size(); i++)
-				cout << books[i].title << " by " << books[i].author << " costs $" << books[i].cost <<"."<< endl;
+				cout << books[i]->title << " by " << books[i]->author << " costs $" << books[i]->cost <<"."<< endl;
+			break;
+
 		case 6:
-			vector <const Book*>books = inventory.getBooksByAge();
+			books = inventory.getBooksByAge();
 			for (int i = 0; i < books.size(); i++)
-				cout << books[i].title << " by " << books[i].author << " is " << books[i].age <<" years old."<< endl;
+				cout << books[i]->title << " by " << books[i]->author << " is " << ctime(&books[i]->date) <<" years old."<< endl;
+			break;
 
 		case 7:
-			
+			forever = 0;
 			break;
 
 		default:;
 
 		}                                           //end of switch statement
 	}                                               //end of infinite loop
-	return 0;
+	return;
 }
