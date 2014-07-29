@@ -2,19 +2,16 @@
 #include <string>
 #include <ctime>
 #include <cstring>
+#include <vector>
 
 #include "Inventory.h"
 #include "Book.h"
 
 using namespace std;
 
-Inventory::Inventory()
-	: array_size(10)
-	, books(new Book*[array_size]) {}
-
 Inventory::~Inventory()
 {
-	delete[] books;
+	for (size_t i = 0; i < books.size(); i++) delete books[i];
 }
 
 void Inventory::run()
@@ -33,51 +30,92 @@ void Inventory::run()
 	getline(cin, line);
 
 	cout << endl;
-	cout << "Add 5 new books..." << endl;
-	Book *book = new Book(0, "Title", "Author", "Publisher", 1, 2, 5);
-	add(book);
-	cout << "Book added: " << ctime(&books[getSize() - 1]->date);
+	cout << "Add 5 x Book 1..." << endl;
+	add(new Book(0, "Book 1", "Author", "Publisher", 1, 2, 5));
+	cout << "Add 3 x Book 2..." << endl;
+	add(new Book(0, "Book 2", "Author", "Publisher", 1, 2, 3));
 
-	cout << "Remove 1 book..." << endl;
-	remove(book, 1);
-	cout << "Quantity: " << book->qty << endl;
+	cout << endl;
+	cout << "Books: " << endl;
+	vector<const Book*> books = getBooks();
+	for (size_t i = 0; i < books.size(); i++) {
+		const Book *book = books[i];
+		cout << i + 1 << ". " << books[i]->qty << " x "
+				<< books[i]->title << " by " << books[i]->author
+				<< " added on " << ctime(&books[i]->date);
+	}
+	cout << endl;
 
-	cout << "Remove 4 books..." << endl;
-	remove(book, 4);
-	cout << "Inventory size: " << getSize() << endl;
+	cout << "Remove 1 x Book 1..." << endl;
+	remove(books[0], 1);
+
+	cout << endl;
+	cout << "Books: " << endl;
+	books = getBooks();
+	for (size_t i = 0; i < books.size(); i++) {
+		const Book *book = books[i];
+		cout << i + 1 << ". " << books[i]->qty << " x "
+			<< books[i]->title << " by " << books[i]->author
+			<< " added on " << ctime(&books[i]->date);
+	}
+	cout << endl;
+
+	cout << "Remove 4 x Book 1..." << endl;
+	remove(books[0], 4);
+
+	cout << endl;
+	cout << "Books: " << endl;
+	books = getBooks();
+	for (size_t i = 0; i < books.size(); i++) {
+		const Book *book = books[i];
+		cout << i + 1 << ". " << books[i]->qty << " x "
+			<< books[i]->title << " by " << books[i]->author
+			<< " added on " << ctime(&books[i]->date);
+	}
+	cout << endl;
+
+	cout << "Press enter to continue...";
+	getline(cin, line);
 }
 
-const Book **Inventory::getBooks()
+vector<const Book*> Inventory::getBooks()
 {
-	const Book **books = new const Book*[size];
-	memcpy(books, this->books, size);
-	return books;
+	vector<const Book*> b;
+	for (size_t i = 0; i < books.size(); i++) b.push_back(books[i]);
+	return b;
 }
 
-int Inventory::getSize() { return size; }
+vector<const Book*> Inventory::getBooksByTitle() {
+	return getBooks();
+}
+vector<const Book*> Inventory::getBooksByQty() {
+	return getBooks();
+}
+
+vector<const Book*> Inventory::getBooksByCost() {
+	return getBooks();
+}
+
+vector<const Book*> Inventory::getBooksByAge() {
+	return getBooks();
+}
+
+int Inventory::getSize() { return books.size(); }
 
 void Inventory::add(Book *book)
 {
-	if (size == array_size) {
-		array_size *= 2;
-		Book **new_books = new Book*[array_size];
-		memcpy(new_books, books, size);
-		books = new_books;
-	}
-
-	books[size++] = book;
+	books.push_back(book);
 }
 
 void Inventory::remove(const Book *book, int qty)
 {
-	for (int i = 0; i < size; i++) {
+	for (size_t i = 0; i < books.size(); i++) {
 		if (books[i] == book) {
 			books[i]->qty -= qty;
 
 			if (books[i]->qty <= 0) {
 				delete books[i];
-				memcpy(books + i, books + i + 1, size - i - 1);
-				size--;
+				books.erase(books.begin() + i);
 			}
 
 			break;
@@ -85,8 +123,10 @@ void Inventory::remove(const Book *book, int qty)
 	}
 }
 
+/*
 int main()
 {
 	Module *module = new Inventory();
 	module->run();
 }
+*/

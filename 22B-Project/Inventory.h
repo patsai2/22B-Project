@@ -2,29 +2,27 @@
 #define INVENTORY_H
 
 #include <string>
+#include <vector>
 
 #include "Module.h"
 #include "Book.h"
 
 class Inventory : public Module
 {
-	Book **books;
-	int size;
-	int array_size;
+	std::vector<Book*> books;
 
 public:
-	Inventory();
 	~Inventory();
 	bool open(std::string file);
-	virtual void run();
-	const Book **getBooks();                //for monica's use
-	const Book **getBooksByTitle();
-	const Book **getBooksByQty();
-	const Book **getBooksByCost();
-	const Book **getBooksByAge();
+	void run();
+	std::vector<const Book*> getBooks();
+	std::vector<const Book*> getBooksByTitle();
+	std::vector<const Book*> getBooksByQty();
+	std::vector<const Book*> getBooksByCost();
+	std::vector<const Book*> getBooksByAge();
 	int getSize();
 	void add(Book *book);
-	void remove(const Book *book, int qty); //for monica's use
+	void remove(const Book *book, int qty);
 };
 
 #endif
