@@ -2,6 +2,7 @@
 #define INVENTORY_H
 
 #include <string>
+#include <fstream>
 #include <vector>
 
 #include "Module.h"
