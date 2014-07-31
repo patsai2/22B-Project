@@ -71,14 +71,16 @@ void ReportsModule::run()
 		
 		case 4: 
 			books = inventory.getBooksByQty();
+			cout << "Quantity" << "/t" << "Title" << "/t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-			cout << "There are " << books[i]->qty << " books called " << books[i]->title << "by " << books[i]->author <<"."<< endl;
+			cout << books[i]->qty << "/t" << books[i]->title << "/t" << books[i]->author << endl;
 			break;
 		
 		case 5:
 			books = inventory.getBooksByCost();
+			cout << "Cost" << "/t" << "Title" << "/t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->title << " by " << books[i]->author << " costs $" << books[i]->cost <<"."<< endl;
+				cout << books[i]->cost<<"/t"<< books[i]->title << " /t" << books[i]->author << endl;
 			break;
 
 		case 6:
@@ -114,11 +116,12 @@ void ReportsModule::run()
 					<< books[i]->title << " by " << books[i]->author
 					<< " added on " << ctime(&books[i]->date);
 			}
-			//end
+			//end test
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];
 				cout << "test again" << endl;
-				cout << books[i]->title << " by " << books[i]->author << " is " << ctime(&books[i]->date) << " years old." << endl;
+				cout << "Age" << "/t" << "Title" << "/t" << "Author" << endl;
+				cout << ctime(&books[i]->date) <<"/t"<< books[i]->title << "/t" << books[i]->author << endl;
 			}
 				break;
 
