@@ -62,6 +62,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cashier.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ReportsModule.cpp" />
     <ClCompile Include="Book.cpp" />
@@ -69,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Book.h" />
+    <ClInclude Include="Cashier.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ReportsModule.h" />

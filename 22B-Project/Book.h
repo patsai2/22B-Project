@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ctime>
+#include <iostream>
 
 class Book
 {
@@ -16,10 +17,12 @@ public:
 	double cost;
 	double price;
 
+	Book();
 	Book(long isbn, std::string title, std::string author, std::string publisher,
 			double cost, double price, int qty = 1, time_t date = time(0));
 
-	friend std::ostream& operator<<(std::ostream& os, Book& book);
+	friend std::ostream& operator<<(std::ostream& os, const Book& book);
+	friend std::istream& operator>>(std::istream& is, Book& book);
 };
 
 #endif

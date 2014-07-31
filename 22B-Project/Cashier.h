@@ -22,7 +22,7 @@
 
 class Cashier: public Module
 {
-    Inventory inventory;
+    Inventory *inventory;
 public:
 	Cashier(Inventory &inventory);
 	void run();

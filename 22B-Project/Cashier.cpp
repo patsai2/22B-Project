@@ -15,15 +15,13 @@
 using namespace std;
 
 
-Cashier::Cashier(Inventory &inventory): inventory(inventory)
+Cashier::Cashier(Inventory &inventory): inventory(&inventory)
 {
-
-    
 }
 
 void Cashier::run()
 {
-    string booktitle;           //book title
+    int booknumber;           //book title
     int x;                      //quantity of books
     
     
@@ -35,11 +33,9 @@ void Cashier::run()
     cout << endl;
     cout<< "Which Book would you like purchase?" << endl;
     cout << endl;
-	cout << "Books: " << endl;
-	
-    vector<const Book*> books = getBooks();     //figure out vectors
+	cout << "Here are your choices: " << endl;
 
-    
+    vector<const Book*> books = inventory->getBooks();
     for (size_t i = 0; i < books.size(); i++)
     {
 		cout << i + 1 << ". " << books[i]->qty << " x "
@@ -47,25 +43,31 @@ void Cashier::run()
         << " added on " << ctime(&books[i]->date);
     }
 
-    cout<< "Which Book would you like to purchase?" << endl;
-    cin >> booktitle;
+    cout<< "Which Book number would you like to purchase?" << endl;
+    cin >> booknumber;
     cout<<"How many books with that title would you like to purchase?" << endl;
     cin>>x;
+   
+    if(booknumber>books.size() || booknumber < 1)              //need to find book, redo if statement
+    {
+        cout<<"Invalid Name"<<endl;
+    }
+   
     
-    remove(books[input-1], qty);
+    remove(books[x-1], x-1);
     
      cout << "Serendipity Book Sellers" <<endl;
      cout << endl;
      cout << "Date:"<<" "<< __DATE__ << endl;
      cout<<"Qty     ISBN            Title           Price         Total" <<endl;
      cout<<"-----------------------------------------------------------"<<endl;
-    cout<<"     "<< x<< isbn<< title<< Price<< total<endl;     //print out info they need
-    cout<< endl<<endl;
-    cout<<"Subtotal:"<<" "<< /*print out subtitle*/ << endl;
-    cout<<"Tax:"<<" "<< /*print out tax*/ << endl;
-    cout<<"Total:"<<" "<< /*print out total*/ << endl;
-    cout<<endl;
-    cout<< "Thanks For Shopping at Serendipity."
+     cout<<"     "<<books.quantity << books.isbn<< books.title<< books.Price<< total<endl;     //print out info they need
+     cout<< endl<<endl;
+     cout<<"Subtotal:"<<" "<< print out subtitle << endl;
+     cout<<"Tax:"<<" "<< print out tax << endl;
+     cout<<"Total:"<<" "<< print out total << endl;
+     cout<<endl;
+     cout<< "Thanks For Shopping at Serendipity." */
 }
 
 

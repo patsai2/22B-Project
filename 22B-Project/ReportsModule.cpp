@@ -7,7 +7,7 @@
 
 using namespace std;
 
-ReportsModule::ReportsModule(Inventory &inventory) : inventory(inventory) {}
+ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
 
 void ReportsModule::run()
 {
@@ -29,13 +29,12 @@ void ReportsModule::run()
 	cout << endl;
 	cout << "     Enter Your Choice: ";
 	cin >> choice;
-	Inventory inventory;
 	vector <const Book*>books;
 
 		switch (choice)
 		{
 		case 1:
-			books = inventory.getBooks();
+			books = inventory->getBooks();
 
 			for (size_t i = 0; i < books.size(); i++)
 			{
@@ -46,7 +45,7 @@ void ReportsModule::run()
 			break;
 
 		case 2:
-			books = inventory.getBooks();
+			books = inventory->getBooks();
 			value = 0;
 			
 			for (size_t i = 0; i < books.size(); i++)
@@ -58,7 +57,7 @@ void ReportsModule::run()
 			break;
 
 		case 3:
-			books = inventory.getBooks();
+			books = inventory->getBooks();
 			value = 0;
 			
 			for (size_t i = 0; i < books.size(); i++)
@@ -70,14 +69,14 @@ void ReportsModule::run()
 			break;
 		
 		case 4: 
-			books = inventory.getBooksByQty();
+			books = inventory->getBooksByQty();
 			cout << "Quantity" << "/t" << "Title" << "/t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
 			cout << books[i]->qty << "/t" << books[i]->title << "/t" << books[i]->author << endl;
 			break;
 		
 		case 5:
-			books = inventory.getBooksByCost();
+			books = inventory->getBooksByCost();
 			cout << "Cost" << "/t" << "Title" << "/t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
 				cout << books[i]->cost<<"/t"<< books[i]->title << " /t" << books[i]->author << endl;
