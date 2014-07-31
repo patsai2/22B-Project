@@ -7,11 +7,13 @@
 
 using namespace std;
 
+ReportsModule::ReportsModule(Inventory& inventory) : inventory(inventory) {}
+
 void ReportsModule::run()
 {
 	int choice;
 	int forever = 1;
-
+	while (forever == 1){
 	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
 	cout << "              Reports              " << endl;
 	cout << endl;
@@ -24,13 +26,11 @@ void ReportsModule::run()
 	cout << "     7. Return to Main Menu        " << endl;
 
 	cout << endl;
-	cout << "     Enter Your Choice:            " << endl;
+	cout << "     Enter Your Choice: ";
 	cin >> choice;
 	Inventory inventory;
 	vector <const Book*>books;
 
-	while (forever == 1)
-	{
 		switch (choice)
 		{
 		case 1:
@@ -44,20 +44,55 @@ void ReportsModule::run()
 			break;
 		case 4: 
 			books = inventory.getBooksByQty();
-			for (int i = 0; i < books.size(); i++)
+			for (size_t i = 0; i < books.size(); i++)
 			cout << "There are " << books[i]->qty << " books called " << books[i]->title << "by " << books[i]->author <<"."<< endl;
 			break;
 		case 5:
 			books = inventory.getBooksByCost();
-			for (int i = 0; i < books.size(); i++)
+			for (size_t i = 0; i < books.size(); i++)
 				cout << books[i]->title << " by " << books[i]->author << " costs $" << books[i]->cost <<"."<< endl;
 			break;
 
 		case 6:
-			books = inventory.getBooksByAge();
-			for (int i = 0; i < books.size(); i++)
-				cout << books[i]->title << " by " << books[i]->author << " is " << ctime(&books[i]->date) <<" years old."<< endl;
-			break;
+			cout << "test"<<endl;
+			//start
+			for (size_t i = 0; i < books.size(); i++) {
+				const Book *book = books[i];
+				cout << i + 1 << ". " << books[i]->qty << " x "
+					<< books[i]->title << " by " << books[i]->author
+					<< " added on " << ctime(&books[i]->date);
+			}
+			cout << endl;
+
+			cout << "Remove 1 x Book 1..." << endl;
+
+			cout << endl;
+			cout << "Books: " << endl;
+			for (size_t i = 0; i < books.size(); i++) {
+				const Book *book = books[i];
+				cout << i + 1 << ". " << books[i]->qty << " x "
+					<< books[i]->title << " by " << books[i]->author
+					<< " added on " << ctime(&books[i]->date);
+			}
+			cout << endl;
+
+			cout << "Remove 4 x Book 1..." << endl;
+
+			cout << endl;
+			cout << "Books: " << endl;
+			for (size_t i = 0; i < books.size(); i++) {
+				const Book *book = books[i];
+				cout << i + 1 << ". " << books[i]->qty << " x "
+					<< books[i]->title << " by " << books[i]->author
+					<< " added on " << ctime(&books[i]->date);
+			}
+			//end
+			for (size_t i = 0; i < books.size(); i++){
+				const Book*book = books[i];
+				cout << "test again" << endl;
+				cout << books[i]->title << " by " << books[i]->author << " is " << ctime(&books[i]->date) << " years old." << endl;
+			}
+				break;
 
 		case 7:
 			forever = 0;

@@ -8,11 +8,12 @@
 #include "Inventory.h"
 
 
-class ReportsModule : public Inventory
+class ReportsModule : public Module
 {
+	Inventory inventory;
 
 public:
-	ReportsModule(Inventory *inventory);
+	ReportsModule(Inventory& inventory);
 	void run();
 };
 

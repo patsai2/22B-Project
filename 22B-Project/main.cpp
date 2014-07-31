@@ -7,13 +7,26 @@
 //
 
 #include <iostream>
+
+#include "Book.h"
+#include "Inventory.h"
+#include "ReportsModule.h"
+
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
+	Inventory inventory;
+	ReportsModule reports(inventory);
+
+	Module *module;
+	//module = &reports;
+	//module->run();
+
 	int choice;
 	int forever = 1;
-
+	while (forever == 1)
+	{
 	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
 	cout << "             Main Menu             " << endl;
 	cout << endl;
@@ -22,24 +35,30 @@ int main(int argc, const char * argv[])
 	cout << "     3. Report Module              " << endl;
 	cout << "     4. Exit                       " << endl;
 	cout << endl;
-	cout << "     Enter Your Choice:            " << endl;
+	cout << "     Enter Your Choice: ";
 	cin >> choice;
-	while (forever == 1)
-	{
+
 		switch (choice)
 		{
 		case 1:
-			cout << "Serendipity Booksellers            " << endl;
+			cout << "Cashier Module is not ready yet    " << endl;
 			cout << endl;
-			cout << "Date:                              " << endl;
-
+			break;
 		case 2:
+			module = &inventory;
+			module->run();
 
+			break;
 		case 3:
+			module = &reports;
+			module->run();
+			break;
+		case 4: 
+			return 0;
 
-		case 4: break;
-
-		default:;
+		default:
+			cout << "You didn't enter a valid choice" << endl;
+			
 
 		}                                           //end of switch statement
 	}                                               //end of infinite loop
