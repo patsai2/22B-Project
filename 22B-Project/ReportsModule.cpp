@@ -12,7 +12,7 @@ ReportsModule::ReportsModule(Inventory& inventory) : inventory(inventory) {}
 void ReportsModule::run()
 {
 	int choice; 
-	float value;
+	double value;
 	int forever = 1;
 	while (forever == 1){
 	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
