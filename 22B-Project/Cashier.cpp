@@ -52,22 +52,24 @@ void Cashier::run()
     {
         cout<<"Invalid Name"<<endl;
     }
-   
-    
-    remove(books[x-1], x-1);
-    
+   else
+   {
+  //  Book *book= const books[booknumber-1];
+       
      cout << "Serendipity Book Sellers" <<endl;
      cout << endl;
      cout << "Date:"<<" "<< __DATE__ << endl;
      cout<<"Qty     ISBN            Title           Price         Total" <<endl;
      cout<<"-----------------------------------------------------------"<<endl;
-     cout<<"     "<<books.quantity << books.isbn<< books.title<< books.Price<< total<endl;     //print out info they need
+     cout<<"     "<<books[booknumber-1]->qty << books[booknumber-1]->isbn<< books[booknumber-1]->title<< books[booknumber-1]->price<< total<endl;     //print out info they need
      cout<< endl<<endl;
-     cout<<"Subtotal:"<<" "<< print out subtitle << endl;
-     cout<<"Tax:"<<" "<< print out tax << endl;
-     cout<<"Total:"<<" "<< print out total << endl;
+    // cout<<"Subtotal:"<<" "<<  << endl;
+    //  cout<<"Tax:"<<" "<< print out tax << endl;
+     //cout<<"Total:"<<" "<< print out total << endl;
      cout<<endl;
-     cout<< "Thanks For Shopping at Serendipity." */
+     cout<< "Thanks For Shopping at Serendipity."
+    inventory.remove(books[booknumber-1], x-1);
+   }
 }
 
 
