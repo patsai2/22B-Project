@@ -27,7 +27,7 @@ int main(int argc, const char * argv[])
 	int forever = 1;
 	while (forever == 1)
 	{
-	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
+	cout << "      Serendipity Booksellers      " << endl;     //35 spaces long
 	cout << "             Main Menu             " << endl;
 	cout << endl;
 	cout << "     1. Cashier Module             " << endl;
@@ -41,7 +41,9 @@ int main(int argc, const char * argv[])
 		switch (choice)
 		{
 		case 1:
-			cout << "Cashier Module is not ready yet    " << endl;
+                module=&cashier;
+                module->run();
+                cout << "Cashier Module is not ready yet    " << endl;
 			cout << endl;
 			break;
 		case 2:
