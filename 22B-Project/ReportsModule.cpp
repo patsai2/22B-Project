@@ -7,7 +7,7 @@
 
 using namespace std;
 
-ReportsModule::ReportsModule(Inventory& inventory) : inventory(inventory) {}
+ReportsModule::ReportsModule(Inventory &inventory) : inventory(inventory) {}
 
 void ReportsModule::run()
 {
