@@ -1,40 +1,27 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <ctime>
 #include <vector>
+#include <ctime>
 
 #include "Inventory.h"
 #include "Book.h"
 
 using namespace std;
 
+Inventory::Inventory(string filename) : file(filename)
+{
+	while (file.good()) {
+		Book *book = new Book();
+		file >> *book;
+		add(book);
+	}
+}
+
 Inventory::~Inventory()
 {
-	close();
-	for (size_t i = 0; i < books.size(); i++) delete books[i];
-}
-
-bool Inventory::open(string filename)
-{
-	file.open(filename);
-	if (!file.good()) {
-		file.close();
-		return false;
-	}
-
-	cout << filename << ":" << endl;
-	string line;
-	while (file.good()) {
-		getline(file, line);
-		cout << line << endl;
-	}
-	cout << endl;
-}
-
-void Inventory::close()
-{
 	file.close();
+	for (size_t i = 0; i < books.size(); i++) delete books[i];
 }
 
 void Inventory::run()
@@ -149,8 +136,9 @@ void Inventory::remove(const Book *book, int qty)
 /*
 int main()
 {
-	Inventory inventory;
-	inventory.open("books.tsv");
+	Inventory inventory("books.tsv");
+	vector<const Book*> books = inventory.getBooks();
+	for (size_t i = 0; i < books.size(); i++) cout << *(books[i]) << endl;
 	Module *module = &inventory;
 	module->run();
 }

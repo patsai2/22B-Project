@@ -10,7 +10,7 @@
 
 class ReportsModule : public Module
 {
-	Inventory inventory;
+	Inventory *inventory;
 
 public:
 	ReportsModule(Inventory& inventory);

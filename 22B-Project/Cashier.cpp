@@ -15,7 +15,7 @@
 using namespace std;
 
 
-Cashier::Cashier(Inventory &inventory): inventory(inventory)
+Cashier::Cashier(Inventory &inventory): inventory(&inventory)
 {
 }
 
@@ -34,10 +34,8 @@ void Cashier::run()
     cout<< "Which Book would you like purchase?" << endl;
     cout << endl;
 	cout << "Here are your choices: " << endl;
-	
-    vector<const Book*> books = inventory.getBooks();     //figure out vectors
 
-    
+    vector<const Book*> books = inventory->getBooks();
     for (size_t i = 0; i < books.size(); i++)
     {
 		cout << i + 1 << ". " << books[i]->qty << " x "

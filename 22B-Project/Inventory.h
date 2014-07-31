@@ -14,9 +14,8 @@ class Inventory : public Module
 	std::vector<Book*> books;
 
 public:
+	Inventory(std::string file);
 	~Inventory();
-	bool open(std::string file);
-	void close();
 	void run();
 	std::vector<const Book*> getBooks();
 	std::vector<const Book*> getBooksByTitle();
