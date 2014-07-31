@@ -11,7 +11,8 @@ ReportsModule::ReportsModule(Inventory& inventory) : inventory(inventory) {}
 
 void ReportsModule::run()
 {
-	int choice;
+	int choice; 
+	float value;
 	int forever = 1;
 	while (forever == 1){
 	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
@@ -35,18 +36,45 @@ void ReportsModule::run()
 		{
 		case 1:
 			books = inventory.getBooks();
+
+			for (size_t i = 0; i < books.size(); i++)
+			{
+				cout << "Following is the information about " << books[i]->title << "book:" << endl;
+				cout << "author " << books[i]->author << ", publisher " << books[i]->publisher << ", quantity in inventory " << books[i]->qty 
+					<< ", cost " << books[i]->cost << ", price " << books[i]->price << ", and ISBN " << books[i]->isbn << "." << endl;
+			}
 			break;
 
 		case 2:
+			books = inventory.getBooks();
+			value = 0;
+			
+			for (size_t i = 0; i < books.size(); i++)
+			{
+				value += books[i]->cost;
+			}
+			
+			cout << "Inventory's wholesale value is " << value << endl;
 			break;
 
 		case 3:
+			books = inventory.getBooks();
+			value = 0;
+			
+			for (size_t i = 0; i < books.size(); i++)
+			{
+				value += books[i]->price;
+			}
+			
+			cout << "Inventory's retail value is " << value << endl;
 			break;
+		
 		case 4: 
 			books = inventory.getBooksByQty();
 			for (size_t i = 0; i < books.size(); i++)
 			cout << "There are " << books[i]->qty << " books called " << books[i]->title << "by " << books[i]->author <<"."<< endl;
 			break;
+		
 		case 5:
 			books = inventory.getBooksByCost();
 			for (size_t i = 0; i < books.size(); i++)
