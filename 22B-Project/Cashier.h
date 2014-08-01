@@ -7,8 +7,8 @@
 //
 
 
-#ifndef __Cashier__
-#define __Cashier__
+#ifndef Cashier_H
+#define Cashier_H
 
 
 #include <string>
