@@ -28,38 +28,39 @@ int main(int argc, const char * argv[])
 	int forever = 1;
 	while (forever == 1)
 	{
-	cout << "      Serendipity Booksellers      " << endl;     //35 spaces long
-	cout << "             Main Menu             " << endl;
-	cout << endl;
-	cout << "     1. Cashier Module             " << endl;
-	cout << "     2. Inventory Database Module  " << endl;
-	cout << "     3. Report Module              " << endl;
-	cout << "     4. Exit                       " << endl;
-	cout << endl;
-	cout << "     Enter Your Choice: ";
-	cin >> choice;
+        cout << "      Serendipity Booksellers      " << endl;     //35 spaces long
+        cout << "             Main Menu             " << endl;
+        cout << endl;
+        cout << "     1. Cashier Module             " << endl;
+        cout << "     2. Inventory Database Module  " << endl;
+        cout << "     3. Report Module              " << endl;
+        cout << "     4. Exit                       " << endl;
+        cout << endl;
+        cout << "     Enter Your Choice: ";
+        cin >> choice;
 
 		switch (choice)
 		{
-		case 1:
-            module=&cashier;
-            module->run();
-			cout << endl;
-			break;
-		case 2:
-			module = &inventory;
-			module->run();
+            case 1:
+                
+                module= &cashier;
 
-			break;
-		case 3:
-			module = &reports;
-			module->run();
-			break;
-		case 4: 
-			return 0;
+                module->run();
+                break;
+            case 2:
+                module = &inventory;
+                module->run();
 
-		default:
-			cout << "You didn't enter a valid choice" << endl;
+                break;
+            case 3:
+                module = &reports;
+                module->run();
+                break;
+            case 4: 
+                return 0;
+
+            default:
+                cout << "You didn't enter a valid choice" << endl;
 			
 
 		}                                           //end of switch statement

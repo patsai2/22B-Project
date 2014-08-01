@@ -7,8 +7,8 @@
 //
 
 
-#ifndef __ClassProjectCIS22B__Cashier__
-#define __ClassProjectCIS22B__Cashier__
+#ifndef __Cashier__
+#define __Cashier__
 
 
 #include <string>
@@ -17,9 +17,6 @@
 #include "Module.h"
 #include "Inventory.h"
 #include <ctime>
-
-
-
 
 class Cashier: public Module
 {
