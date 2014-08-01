@@ -67,8 +67,8 @@ void Cashier::run()
     //  cout<<"Tax:"<<" "<< print out tax << endl;
      //cout<<"Total:"<<" "<< print out total << endl;
      cout<<endl;
-     cout<< "Thanks For Shopping at Serendipity."
-    inventory.remove(books[booknumber-1], x-1);
+     cout<< "Thanks For Shopping at Serendipity.";
+    inventory->remove(books[booknumber-1], x-1);
    }
 }
 
