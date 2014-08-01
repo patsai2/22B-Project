@@ -3,7 +3,6 @@
 #include <fstream>
 #include <vector>
 #include <ctime>
-
 #include "Inventory.h"
 #include "Book.h"
 

@@ -1,19 +1,12 @@
-//
-//  Cashier.h
-//  ClassProjectCIS22B
-//
-//  Created by Monica Metzger on 7/29/14.
-//  Copyright (c) 2014 Monica Metzger. All rights reserved.
-//
 
 
-#ifndef Cashier_H
-#define Cashier_H
+#ifndef CASHIER_H
+#define CASHIER_H
 
 
 #include <string>
 #include <vector>
-
+#include "Book.h"
 #include "Module.h"
 #include "Inventory.h"
 #include <ctime>

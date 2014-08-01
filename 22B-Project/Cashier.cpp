@@ -11,6 +11,7 @@
 #include "stdio.h"
 #include "Inventory.h"
 #include "Book.h"
+#include "Module.h"
 
 
 using namespace std;
