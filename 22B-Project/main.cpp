@@ -11,6 +11,7 @@
 #include "Book.h"
 #include "Inventory.h"
 #include "ReportsModule.h"
+#include "Cashier.h"
 
 using namespace std;
 
@@ -41,9 +42,8 @@ int main(int argc, const char * argv[])
 		switch (choice)
 		{
 		case 1:
-                module=&cashier;
-                module->run();
-                cout << "Cashier Module is not ready yet    " << endl;
+            module=&cashier;
+            module->run();
 			cout << endl;
 			break;
 		case 2:
