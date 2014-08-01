@@ -44,7 +44,6 @@ int main(int argc, const char * argv[])
             case 1:
                 
                 module= &cashier;
-
                 module->run();
                 break;
             case 2:

@@ -10,6 +10,7 @@
 #include <iostream>
 #include "stdio.h"
 #include "Inventory.h"
+#include "Book.h"
 
 
 using namespace std;
