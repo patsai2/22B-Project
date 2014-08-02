@@ -55,9 +55,9 @@ void Inventory::run()
 	vector<const Book*> books = getBooks();
 	for (size_t i = 0; i < books.size(); i++) {
 		const Book *book = books[i];
-		cout << i + 1 << ". " << books[i]->qty << " x "
-				<< books[i]->title << " by " << books[i]->author
-				<< " added on " << ctime(&books[i]->date);
+		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
+				<< book->title << " by " << book->author
+				<< " added on " << book->getDateStr() << endl;
 	}
 	cout << endl;
 
@@ -69,9 +69,9 @@ void Inventory::run()
 	books = getBooks();
 	for (size_t i = 0; i < books.size(); i++) {
 		const Book *book = books[i];
-		cout << i + 1 << ". " << books[i]->qty << " x "
-			<< books[i]->title << " by " << books[i]->author
-			<< " added on " << ctime(&books[i]->date);
+		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
+				<< book->title << " by " << book->author
+				<< " added on " << book->getDateStr() << endl;
 	}
 	cout << endl;
 
@@ -83,14 +83,11 @@ void Inventory::run()
 	books = getBooks();
 	for (size_t i = 0; i < books.size(); i++) {
 		const Book *book = books[i];
-		cout << i + 1 << ". " << books[i]->qty << " x "
-			<< books[i]->title << " by " << books[i]->author
-			<< " added on " << ctime(&books[i]->date);
+		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
+				<< book->title << " by " << book->author
+				<< " added on " << book->getDateStr() << endl;
 	}
 	cout << endl;
-
-	cout << "Press enter to continue...";
-	getline(cin, line);
 }
 
 vector<const Book*> Inventory::getBooks()
@@ -100,14 +97,18 @@ vector<const Book*> Inventory::getBooks()
 	return b;
 }
 
-vector<const Book*> Inventory::getBooksByTitle() {
-	return getBooks();
-}
-vector<const Book*> Inventory::getBooksByQty() {
+vector<const Book*> Inventory::getBooksByTitle()
+{
 	return getBooks();
 }
 
-vector<const Book*> Inventory::getBooksByCost() {
+vector<const Book*> Inventory::getBooksByQty()
+{
+	return getBooks();
+}
+
+vector<const Book*> Inventory::getBooksByCost()
+{
 	return getBooks();
 }
 

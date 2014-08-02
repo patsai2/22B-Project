@@ -19,6 +19,13 @@ Book::Book(long isbn, string title, string author, string publisher, double cost
 	, cost(cost)
 	, price(price) {}
 
+string Book::getDateStr() const
+{
+	tm *time = localtime(&date);
+	return to_string(time->tm_mon + 1) + "/" + to_string(time->tm_mday) + "/"
+			+ to_string(time->tm_year + 1900);
+}
+
 std::ostream& operator<<(std::ostream& os, const Book& book)
 {
 	os << book.isbn << '\t'
