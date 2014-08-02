@@ -42,11 +42,10 @@ void Cashier::run()
     while(exit==0)                                              //loop to have user enter another book
     {
         
-        cout<< "Which Book would you like purchase?" << endl;
-        cout << endl;
-        cout << "Here are your choices: " << endl;
+        cout << "Select which book to purchase: " << endl;
 
         vector<const Book*> books = inventory->getBooks();
+        
         for (size_t i = 0; i < books.size(); i++)               //for loop that prints out all the book titles, authors, date and quantity
         {
             cout << i + 1 << ". " << books[i]->qty << " x "

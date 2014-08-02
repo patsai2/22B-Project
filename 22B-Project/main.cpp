@@ -19,6 +19,8 @@ int main(int argc, const char * argv[])
 {
 	Inventory inventory("books.tsv");
 	ReportsModule reports(inventory);
+    Cashier cashier(inventory);
+    
 
 	Module *module;
 	//module = &reports;
