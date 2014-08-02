@@ -31,6 +31,7 @@ void Cashier::run()
     float finalTotal;
     int exit=0;
     int answer;
+    string linefromfile;
     
     cout << "Serendipity Book Sellers" <<endl;
     cout << endl;
@@ -46,15 +47,31 @@ void Cashier::run()
 
         vector<const Book*> books = inventory->getBooks();
         
-        for (size_t i = 0; i < books.size(); i++)
+        ifstream infile;
+        infile.open("/Users/monicametzger/22B-Project/22B-Project/books.tsv");
+        
+        if (!infile)
+        {
+            cout << "unable to load file" << endl;
+        }
+        
+        while(!infile.eof())
+        {
+            getline(infile, linefromfile);
+            
+            cout<<linefromfile<<endl;
+        }
+       
+
+      /*  for (size_t i = 0; i < books.size(); i++)
         {
             //const Book *book = books[i];
             cout << i + 1 << ". " << books[i]->qty << " x "
 			<< books[i]->title << " by " << books[i]->author
 			<< " added on " << ctime(&books[i]->date);
-        }
+        }*/
 
-        cout<< "Which Book number would you like to purchase?" << endl;             //asking user for book title number
+        cout<< "\nWhich Book number would you like to purchase?" << endl;             //asking user for book title number
         cin >> booknumber;
         cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
         cin>>x;
