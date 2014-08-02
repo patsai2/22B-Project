@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <ctime>
 #include "Inventory.h"
@@ -10,9 +11,14 @@ using namespace std;
 
 Inventory::Inventory(string filename) : file(filename)
 {
-	while (file.good()) {
+	string line;
+	stringstream ss;
+
+	while (getline(file, line)) {
+		ss.clear();
+		ss.str(line);
 		Book *book = new Book();
-		file >> *book;
+		ss >> *book;
 		add(book);
 	}
 }
