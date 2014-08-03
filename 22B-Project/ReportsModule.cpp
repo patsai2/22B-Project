@@ -70,57 +70,27 @@ void ReportsModule::run()
 		
 		case 4: 
 			books = inventory->getBooksByQty();
-			cout << "Quantity" << "/t" << "Title" << "/t" << "Author" << endl;
+			cout << "Listing by Quantity: \n\n";
+			cout << "Quantity" << "\t" << "Title" << "\t" <<  "\t" <<"Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-			cout << books[i]->qty << "/t" << books[i]->title << "/t" << books[i]->author << endl;
+				cout << books[i]->qty << "\t" << "\t" << books[i]->title << "\t" << "\t" << books[i]->author << endl;
 			break;
 		
 		case 5:
 			books = inventory->getBooksByCost();
-			cout << "Cost" << "/t" << "Title" << "/t" << "Author" << endl;
+			cout << "Listing by Cost: \n\n";
+			cout << "Cost" << "\t" << "\t" << "Title" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->cost<<"/t"<< books[i]->title << " /t" << books[i]->author << endl;
+				cout << books[i]->cost << "\t" << "\t" << books[i]->title <<  "\t"  <<" \t" << books[i]->author << endl;
 			break;
 
 		case 6:
-			cout << "test"<<endl;
-			//start
-			for (size_t i = 0; i < books.size(); i++) {
-				const Book *book = books[i];
-				cout << i + 1 << ". " << books[i]->qty << " x "
-					<< books[i]->title << " by " << books[i]->author
-					<< " added on " << ctime(&books[i]->date);
-			}
-			cout << endl;
-
-			cout << "Remove 1 x Book 1..." << endl;
-
-			cout << endl;
-			cout << "Books: " << endl;
-			for (size_t i = 0; i < books.size(); i++) {
-				const Book *book = books[i];
-				cout << i + 1 << ". " << books[i]->qty << " x "
-					<< books[i]->title << " by " << books[i]->author
-					<< " added on " << ctime(&books[i]->date);
-			}
-			cout << endl;
-
-			cout << "Remove 4 x Book 1..." << endl;
-
-			cout << endl;
-			cout << "Books: " << endl;
-			for (size_t i = 0; i < books.size(); i++) {
-				const Book *book = books[i];
-				cout << i + 1 << ". " << books[i]->qty << " x "
-					<< books[i]->title << " by " << books[i]->author
-					<< " added on " << ctime(&books[i]->date);
-			}
-			//end test
+			books = inventory->getBooksByAge();
+			cout << "Listing by Age \n\n";
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];
-				cout << "test again" << endl;
-				cout << "Age" << "/t" << "Title" << "/t" << "Author" << endl;
-				cout << ctime(&books[i]->date) <<"/t"<< books[i]->title << "/t" << books[i]->author << endl;
+				cout << "Age" << "\t" << "\t" << "Title" << "\t" << "\t" << "Author" << endl;
+				cout << ctime(&books[i]->date) << "\t" << "\t" << books[i]->title << "\t" << "\t" << books[i]->author << endl;
 			}
 				break;
 
@@ -128,7 +98,8 @@ void ReportsModule::run()
 			forever = 0;
 			break;
 
-		default:;
+		default:
+			cout<<"Not a Valid Choice \n\n";
 
 		}                                           //end of switch statement
 	}                                               //end of infinite loop
