@@ -98,23 +98,9 @@ vector<const Book*> Inventory::getBooks()
 	return b;
 }
 
-vector<const Book*> Inventory::getBooksByTitle()
+const Book* Inventory::getBook(string isbn)
 {
-	return getBooks();
-}
-
-vector<const Book*> Inventory::getBooksByQty()
-{
-	return getBooks();
-}
-
-vector<const Book*> Inventory::getBooksByCost()
-{
-	return getBooks();
-}
-
-vector<const Book*> Inventory::getBooksByAge() {
-	return getBooks();
+	return books[0];
 }
 
 int Inventory::getSize() { return books.size(); }

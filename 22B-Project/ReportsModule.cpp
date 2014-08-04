@@ -72,7 +72,7 @@ void ReportsModule::run()
 			break;
 		
 		case 4: 
-			books = inventory->getBooksByQty();
+			books = inventory->getBooks();
 			char a;
 			cout << "Listing by Quantity: \n\n";
 			cout << "Quantity" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
@@ -83,7 +83,7 @@ void ReportsModule::run()
 
 		
 		case 5:
-			books = inventory->getBooksByCost();
+			books = inventory->getBooks();
 			cout << "Listing by Cost: \n\n";
 			cout << "Cost" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
@@ -93,7 +93,7 @@ void ReportsModule::run()
 			break;
 
 		case 6:
-			books = inventory->getBooksByAge();
+			books = inventory->getBooks();
 			cout << "Listing by Age: \n\n";
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];

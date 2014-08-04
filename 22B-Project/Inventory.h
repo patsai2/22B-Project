@@ -18,10 +18,7 @@ public:
 	~Inventory();
 	void run();
 	std::vector<const Book*> getBooks();
-	std::vector<const Book*> getBooksByTitle();
-	std::vector<const Book*> getBooksByQty();
-	std::vector<const Book*> getBooksByCost();
-	std::vector<const Book*> getBooksByAge();
+	const Book *getBook(std::string isbn);
 	int getSize();
 	void add(Book *book);
 	void remove(const Book *book, int qty);
