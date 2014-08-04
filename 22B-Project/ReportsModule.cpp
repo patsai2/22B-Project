@@ -11,10 +11,12 @@ ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
 
 void ReportsModule::run()
 {
+
 	int choice; 
 	double value;
 	int forever = 1;
 	while (forever == 1){
+		system("cls");
 	cout << "      Serendipity Booksellers      " << endl;     //35 spaces wide
 	cout << "              Reports              " << endl;
 	cout << endl;
@@ -29,6 +31,7 @@ void ReportsModule::run()
 	cout << endl;
 	cout << "     Enter Your Choice: ";
 	cin >> choice;
+	system("cls");
 	vector <const Book*>books;
 
 		switch (choice)
@@ -70,28 +73,34 @@ void ReportsModule::run()
 		
 		case 4: 
 			books = inventory->getBooksByQty();
+			char a;
 			cout << "Listing by Quantity: \n\n";
-			cout << "Quantity" << "\t" << "Title" << "\t" <<  "\t" <<"Author" << endl;
+			cout << "Quantity" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->qty << "\t" << "\t" << books[i]->title << "\t" << "\t" << books[i]->author << endl;
+				cout << books[i]->qty << "\t" << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
+			system("pause");
 			break;
+
 		
 		case 5:
 			books = inventory->getBooksByCost();
 			cout << "Listing by Cost: \n\n";
-			cout << "Cost" << "\t" << "\t" << "Title" << "\t" << "\t" << "Author" << endl;
+			cout << "Cost" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->cost << "\t" << "\t" << books[i]->title <<  "\t"  <<" \t" << books[i]->author << endl;
+				cout << books[i]->cost << "\t" << "\t" << "\t" << books[i]->title << "\t" << " \t" << "\t" << books[i]->author << endl;
+			system("pause");
+
 			break;
 
 		case 6:
 			books = inventory->getBooksByAge();
-			cout << "Listing by Age \n\n";
+			cout << "Listing by Age: \n\n";
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];
-				cout << "Age" << "\t" << "\t" << "Title" << "\t" << "\t" << "Author" << endl;
-				cout << ctime(&books[i]->date) << "\t" << "\t" << books[i]->title << "\t" << "\t" << books[i]->author << endl;
+				cout << "Age" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+				cout << ctime(&books[i]->date) << "\t" << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
 			}
+			system("pause");
 				break;
 
 		case 7:
