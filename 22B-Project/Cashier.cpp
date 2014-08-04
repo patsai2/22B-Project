@@ -50,12 +50,6 @@ void Cashier::run()
 
         vector<const Book*> books = inventory->getBooks();
         
-        for (size_t i = 0; i < books.size(); i++)
-        {
-            cout << i + 1 << ". " << books[i]->qty << " x "
-			<< books[i]->title << " by " << books[i]->author
-			<< " added on " << ctime(&books[i]->date);
-        }
 
         cout<< "Enter ISBN of the book you like to purchase?" << endl;             //asking user for isbn
         cin >> isbn;
@@ -88,6 +82,7 @@ void Cashier::run()
             
             purchasedBooks.push_back(book);
             quantities.push_back(x);
+            inventory->remove(book, x);                //removing book from inventory
            
             cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
             cin>>answer;
@@ -124,7 +119,7 @@ void Cashier::run()
        cout<<"Final Total:"<<" "<< finalTotal << endl;                  //final total is tax*total
        cout<<endl;
        cout<< "Thanks For Shopping at Serendipity.";
-      // inventory->remove(books[booknumber-1], x-1);                //removing book from inventory
+   
    }
     
 }
