@@ -45,12 +45,8 @@ void Cashier::run()
     
     while(exit==0)                                              //loop to have user enter another book
     {
-        
-        cout << "Select which book to purchase: " << endl;
-
         vector<const Book*> books = inventory->getBooks();
-        
-
+    
         cout<< "Enter ISBN of the book you like to purchase?" << endl;             //asking user for isbn
         cin >> isbn;
         cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
@@ -103,10 +99,13 @@ void Cashier::run()
         
         for(size_t i=0; i<purchasedBooks.size(); i++)
         {
+            const Book *b=purchasedBooks[i];
+            int q=quantities[i];
             double total=book->price*x;
+           
             subt=subt+total;
             
-            cout<<"   "<<x << book->isbn << "          "<< book->title<<"     "<< book->price<<"     "<< total<<endl;
+            cout<<"   "<<q<< " " << b->isbn << "          "<< b->title<<"     "<< b->price<<"     "<< total<<endl;
             //calculating total of price multiplied by quantity
         }
         
