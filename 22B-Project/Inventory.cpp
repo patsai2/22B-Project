@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <ctime>
+#include <iomanip>
 #include "Inventory.h"
 #include "Book.h"
 
@@ -46,42 +47,8 @@ void Inventory::run()
 	getline(cin, line);
 
 	cout << endl;
-	cout << "Add 5 x Book 1..." << endl;
-	add(new Book("123456789", "Book 1", "Author", "Publisher", 1, 2, 5));
-	cout << "Add 3 x Book 2..." << endl;
-	add(new Book("987654321", "Book 2", "Author", "Publisher", 1, 2, 3));
-
-	cout << endl;
 	cout << "Books: " << endl;
 	vector<const Book*> books = getBooks();
-	for (size_t i = 0; i < books.size(); i++) {
-		const Book *book = books[i];
-		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
-				<< book->title << " by " << book->author
-				<< " added on " << book->getDateStr() << endl;
-	}
-	cout << endl;
-
-	cout << "Remove 1 x Book 1..." << endl;
-	remove(books[0], 1);
-
-	cout << endl;
-	cout << "Books: " << endl;
-	books = getBooks();
-	for (size_t i = 0; i < books.size(); i++) {
-		const Book *book = books[i];
-		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
-				<< book->title << " by " << book->author
-				<< " added on " << book->getDateStr() << endl;
-	}
-	cout << endl;
-
-	cout << "Remove 4 x Book 1..." << endl;
-	remove(books[0], 4);
-
-	cout << endl;
-	cout << "Books: " << endl;
-	books = getBooks();
 	for (size_t i = 0; i < books.size(); i++) {
 		const Book *book = books[i];
 		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "

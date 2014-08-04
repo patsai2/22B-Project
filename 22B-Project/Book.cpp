@@ -1,6 +1,6 @@
 #include <string>
 #include <ctime>
-#include <iostream>
+#include <sstream>
 
 #include "Book.h"
 
@@ -26,6 +26,22 @@ string Book::getDateStr() const
 			+ to_string(time->tm_year + 1900);
 }
 
+void Book::setDate(string date_str)
+{
+	stringstream ss(date_str);
+	string token;
+
+	getline(ss, token, '/');
+	int month = stoi(token);
+	getline(ss, token, '/');
+	int day = stoi(token);
+	getline(ss, token);
+	int year = stoi(token);
+
+	tm time = {0, 0, 0, day, month - 1, year - 1900};
+	date = mktime(&time);
+}
+
 std::ostream& operator<<(std::ostream& os, const Book& book)
 {
 	os << book.isbn << '\t'
@@ -34,7 +50,7 @@ std::ostream& operator<<(std::ostream& os, const Book& book)
 			<< book.publisher << '\t'
 			<< book.cost << '\t'
 			<< book.price << '\t'
-			<< book.date << '\t'
+			<< book.getDateStr() << '\t'
 			<< book.qty << endl;
 	return os;
 }
@@ -56,7 +72,7 @@ std::istream& operator>>(std::istream& is, Book& book)
 	getline(is, token, '\t');
 	book.price = stod(token);
 	getline(is, token, '\t');
-	book.date = stol(token);
+	book.setDate(token);
 	getline(is, token);
 	book.qty = stoi(token);
 
