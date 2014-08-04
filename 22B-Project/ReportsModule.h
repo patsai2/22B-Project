@@ -14,7 +14,10 @@ class ReportsModule : public Module
 
 public:
 	ReportsModule(Inventory& inventory);
-	void selection_sort_int(int quant[], int size);
+	void selection_sort_qty(std::vector <const Book*>& books, int size);
+	void ReportsModule::selection_sort_cost(std::vector<const Book*>& books, int size);
+	void ReportsModule::selection_sort_age(std::vector<const Book*>& books, int size);
+
 	void run();
 };
 
