@@ -47,9 +47,9 @@ void Inventory::run()
 
 	cout << endl;
 	cout << "Add 5 x Book 1..." << endl;
-	add(new Book(0, "Book 1", "Author", "Publisher", 1, 2, 5));
+	add(new Book("123456789", "Book 1", "Author", "Publisher", 1, 2, 5));
 	cout << "Add 3 x Book 2..." << endl;
-	add(new Book(0, "Book 2", "Author", "Publisher", 1, 2, 3));
+	add(new Book("987654321", "Book 2", "Author", "Publisher", 1, 2, 3));
 
 	cout << endl;
 	cout << "Books: " << endl;

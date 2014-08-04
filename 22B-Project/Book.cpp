@@ -8,8 +8,8 @@ using namespace std;
 
 Book::Book() {}
 
-Book::Book(long isbn, string title, string author, string publisher, double cost,
-			double price, int qty, time_t date)
+Book::Book(string isbn, string title, string author, string publisher,
+		double cost, double price, int qty, time_t date)
 	: isbn(isbn)
 	, title(title)
 	, author(author)
@@ -44,7 +44,7 @@ std::istream& operator>>(std::istream& is, Book& book)
 	string token;
 
 	getline(is, token, '\t');
-	book.isbn = stol(token);
+	book.isbn = token;
 	getline(is, token, '\t');
 	book.title = token;
 	getline(is, token, '\t');

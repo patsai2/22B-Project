@@ -68,7 +68,7 @@ void Cashier::run()
         {
        
        int q=books[booknumber-1]->qty;                              //q equals qty from books class
-       const long i= books[booknumber-1]->isbn;                     //i equals isbn number from books
+       string i= books[booknumber-1]->isbn;                         //i equals isbn number from books
        float price=books[booknumber-1]->price;                      //price equals price from books class
        total=price*q;                                               //calculating total of price multiplied by quantity
        

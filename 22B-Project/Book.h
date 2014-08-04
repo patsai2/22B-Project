@@ -8,7 +8,7 @@
 class Book
 {
 public:
-	long isbn;
+	std::string isbn;
 	std::string title;
 	std::string author;
 	std::string publisher;
@@ -18,7 +18,7 @@ public:
 	double price;
 
 	Book();
-	Book(long isbn, std::string title, std::string author, std::string publisher,
+	Book(std::string isbn, std::string title, std::string author, std::string publisher,
 			double cost, double price, int qty = 1, time_t date = time(0));
 
 	std::string getDateStr() const;
