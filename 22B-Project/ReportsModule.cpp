@@ -9,6 +9,24 @@ using namespace std;
 
 ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
 
+void ReportsModule::selection_sort_int(int quant[], int size)
+{
+	for (int i = 0; i < size; i++) {
+		int least = i;
+
+		for (int j = i + 1; j < size; j++) {
+			if (quant[j]<(quant[least]) {
+				least = j;
+			}
+		}
+
+		int tmp = quant[least];
+		quant[least] = quant[i];
+		quant[i] = tmp;
+	}
+}
+
+
 void ReportsModule::run()
 {
 
@@ -33,7 +51,6 @@ void ReportsModule::run()
 	cin >> choice;
 	system("cls");
 	vector <const Book*>books;
-
 		switch (choice)
 		{
 		case 1:
@@ -75,9 +92,10 @@ void ReportsModule::run()
 			books = inventory->getBooks();
 			char a;
 			cout << "Listing by Quantity: \n\n";
-			cout << "Quantity" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+			cout << "Quantity" << "\t" << "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+			selection_sort_int(books[0].qty, books.getSize() );
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->qty << "\t" << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
+				cout << books[i]->qty << "\t" << "\t" <<  books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
 			system("pause");
 			break;
 
@@ -85,9 +103,9 @@ void ReportsModule::run()
 		case 5:
 			books = inventory->getBooks();
 			cout << "Listing by Cost: \n\n";
-			cout << "Cost" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+			cout << "Cost" << "\t" << "\t" << "\t" << "ISBN" << "\t" << "\t" << "\t" "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->cost << "\t" << "\t" << "\t" << books[i]->title << "\t" << " \t" << "\t" << books[i]->author << endl;
+				cout << books[i]->cost << "\t" << "\t" << "\t"<< books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << " \t" << "\t" << books[i]->author << endl;
 			system("pause");
 
 			break;
@@ -97,8 +115,8 @@ void ReportsModule::run()
 			cout << "Listing by Age: \n\n";
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];
-				cout << "Age" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
-				cout << ctime(&books[i]->date) << "\t" << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
+				cout << "Age" << "\t" << "\t" << "\t" "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+				cout << ctime(&books[i]->date) << "\t" << "\t" << "\t" <<books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
 			}
 			system("pause");
 				break;

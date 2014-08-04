@@ -14,6 +14,7 @@ class ReportsModule : public Module
 
 public:
 	ReportsModule(Inventory& inventory);
+	void selection_sort_int(int quant[], int size);
 	void run();
 };
 
