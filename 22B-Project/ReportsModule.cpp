@@ -120,7 +120,7 @@ void ReportsModule::run()
 			
 			cout << "Inventory's retail value is " << value << endl;
 			break;
-		
+
 		case 4: 
 			books = inventory->getBooks();
 			char a;

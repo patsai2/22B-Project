@@ -23,14 +23,18 @@ Cashier::Cashier(Inventory &inventory): inventory(&inventory)
 
 void Cashier::run()
 {
-    int booknumber;           //book title
+    string isbn;           //book title
     int x;                      //quantity of books
-    float total=0;
-    float tax;
+   
+    double tax;
     tax=.0862;
-    float finalTotal;
+    double finalTotal;
     int exit=0;
     int answer;
+    vector<const Book*> purchasedBooks;
+    vector<int> quantities;
+    double subt = 0.0;
+    
     
     cout << "Serendipity Book Sellers" <<endl;
     cout << endl;
@@ -53,45 +57,74 @@ void Cashier::run()
 			<< " added on " << ctime(&books[i]->date);
         }
 
-        cout<< "Which Book number would you like to purchase?" << endl;             //asking user for book title number
-        cin >> booknumber;
+        cout<< "Enter ISBN of the book you like to purchase?" << endl;             //asking user for isbn
+        cin >> isbn;
         cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
         cin>>x;
+        
    
-        if(booknumber>books.size() || booknumber < 1)              //need to find book, redo if statement
+        const Book *book=inventory->getBook(isbn);
+        if(book==NULL)                                      //isbn does not match inventory, cout invalid
         {
-            cout<<"Invalid Name"<<endl;
-            continue;
+            cout<<"Invalid ISBN"<<endl;
+            cout<<"Would you like to try again Y/N?"<<endl;
+            char answer2;
+            cin>>answer2;
+            if(answer2== 'Y' || 'y')
+            {
+                continue;
+            }
+            else
+                exit=1;
         }
+        
         else
         {
-           int q=books[booknumber-1]->qty;                              //q equals qty from books class
-           string i= books[booknumber-1]->isbn;                     //i equals isbn number from books
-           float price=books[booknumber-1]->price;                      //price equals price from books class
-           total=price*q;                                               //calculating total of price multiplied by quantity
+        if(book->qty<x)
+        {
+            cout<<"Do not have that many books in stock" <<endl;
+            continue;
+        }
+            
+            purchasedBooks.push_back(book);
+            quantities.push_back(x);
            
-            cout << "Serendipity Book Sellers" <<endl;
-            cout << endl;
-            cout << "Date:"<<" "<< __DATE__ << endl;                                        //printing out date
-        
-            cout<<"Qty     ISBN            Title           Price         Total" <<endl;
-            cout<<"-----------------------------------------------------------"<<endl;
-            cout<<"     "<<q << i<< books[booknumber-1]->title<< price<< total <<endl;     //print out info they need
-           cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
-           cin>>answer;
-           if(answer==0)
-           {
-               exit=1;                                              //exiting while loop
-           }
+            cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
+            cin>>answer;
+            if(answer==0)
+            {
+                exit=1;                                              //exiting while loop
+            }
+            else continue;
+          
    }
-       finalTotal=tax*total;                                    //calculating final total with tax
+        
+        cout << "Serendipity Book Sellers" <<endl;
+        cout << endl;
+        cout << "Date:"<<" "<< __DATE__ << endl;                                        //printing out date
+        
+        cout<<"Qty     ISBN            Title           Price         Total" <<endl;
+        cout<<"-----------------------------------------------------------"<<endl;
+        
+        for(size_t i=0; i<purchasedBooks.size(); i++)
+        {
+            double total=book->price*x;
+            subt=subt+total;
+            
+            cout<<"   "<<x << book->isbn << "          "<< book->title<<"     "<< book->price<<"     "<< total<<endl;
+            //calculating total of price multiplied by quantity
+        }
+        
+        
+        
+       finalTotal=(tax*subt)+subt;                                    //calculating final total with tax
        cout<< endl<<endl;
-       cout<<"Subtotal:"<<" "<< total << endl;                    //subtotal equals total
-       cout<<"Tax:"<<" "<< tax << endl;                           //tax is .0862
-       cout<<"Total:"<<" "<< finalTotal << endl;                  //final total is tax*total
+       cout<<"Subtotal:"<<" "<< subt << endl;                    //subtotal equals total
+       cout<<"Tax:"<<" "<< tax*subt << endl;                           //tax is .0862
+       cout<<"Final Total:"<<" "<< finalTotal << endl;                  //final total is tax*total
        cout<<endl;
        cout<< "Thanks For Shopping at Serendipity.";
-       inventory->remove(books[booknumber-1], x-1);                //removing book from inventory
+      // inventory->remove(books[booknumber-1], x-1);                //removing book from inventory
    }
     
 }
