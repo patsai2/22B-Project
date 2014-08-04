@@ -46,13 +46,13 @@ void Cashier::run()
 
         vector<const Book*> books = inventory->getBooks();
         
-        for (size_t i = 0; i < books.size(); i++)
+      /*  for (size_t i = 0; i < books.size(); i++)
         {
             //const Book *book = books[i];
             cout << i + 1 << ". " << books[i]->qty << " x "
 			<< books[i]->title << " by " << books[i]->author
 			<< " added on " << ctime(&books[i]->date);
-        }
+        } */
 
         cout<< "Which Book number would you like to purchase?" << endl;             //asking user for book title number
         cin >> booknumber;
@@ -66,34 +66,33 @@ void Cashier::run()
         }
         else
         {
-       
-       int q=books[booknumber-1]->qty;                              //q equals qty from books class
-       string i= books[booknumber-1]->isbn;                         //i equals isbn number from books
-       float price=books[booknumber-1]->price;                      //price equals price from books class
-       total=price*q;                                               //calculating total of price multiplied by quantity
-       
-        cout << "Serendipity Book Sellers" <<endl;
-        cout << endl;
-        cout << "Date:"<<" "<< __DATE__ << endl;                                        //printing out date
-    
-        cout<<"Qty     ISBN            Title           Price         Total" <<endl;
-        cout<<"-----------------------------------------------------------"<<endl;
-        cout<<"     "<<q << i<< books[booknumber-1]->title<< price<< total <<endl;     //print out info they need
-       cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
-       cin>>answer;
-       if(answer==0)
-       {
-           exit=1;                                              //exiting while loop
-       }
+           int q=books[booknumber-1]->qty;                              //q equals qty from books class
+           string i= books[booknumber-1]->isbn;                     //i equals isbn number from books
+           float price=books[booknumber-1]->price;                      //price equals price from books class
+           total=price*q;                                               //calculating total of price multiplied by quantity
+           
+            cout << "Serendipity Book Sellers" <<endl;
+            cout << endl;
+            cout << "Date:"<<" "<< __DATE__ << endl;                                        //printing out date
+        
+            cout<<"Qty     ISBN            Title           Price         Total" <<endl;
+            cout<<"-----------------------------------------------------------"<<endl;
+            cout<<"     "<<q << i<< books[booknumber-1]->title<< price<< total <<endl;     //print out info they need
+           cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
+           cin>>answer;
+           if(answer==0)
+           {
+               exit=1;                                              //exiting while loop
+           }
    }
        finalTotal=tax*total;                                    //calculating final total with tax
        cout<< endl<<endl;
-     cout<<"Subtotal:"<<" "<< total << endl;                    //subtotal equals total
-     cout<<"Tax:"<<" "<< tax << endl;                           //tax is .0862
-     cout<<"Total:"<<" "<< finalTotal << endl;                  //final total is tax*total
-     cout<<endl;
-     cout<< "Thanks For Shopping at Serendipity.";
-    inventory->remove(books[booknumber-1], x-1);                //removing book from inventory
+       cout<<"Subtotal:"<<" "<< total << endl;                    //subtotal equals total
+       cout<<"Tax:"<<" "<< tax << endl;                           //tax is .0862
+       cout<<"Total:"<<" "<< finalTotal << endl;                  //final total is tax*total
+       cout<<endl;
+       cout<< "Thanks For Shopping at Serendipity.";
+       inventory->remove(books[booknumber-1], x-1);                //removing book from inventory
    }
     
 }
