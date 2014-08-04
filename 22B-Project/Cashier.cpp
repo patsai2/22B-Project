@@ -46,13 +46,12 @@ void Cashier::run()
 
         vector<const Book*> books = inventory->getBooks();
         
-      /*  for (size_t i = 0; i < books.size(); i++)
+        for (size_t i = 0; i < books.size(); i++)
         {
-            //const Book *book = books[i];
             cout << i + 1 << ". " << books[i]->qty << " x "
 			<< books[i]->title << " by " << books[i]->author
 			<< " added on " << ctime(&books[i]->date);
-        } */
+        }
 
         cout<< "Which Book number would you like to purchase?" << endl;             //asking user for book title number
         cin >> booknumber;
