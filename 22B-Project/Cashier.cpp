@@ -82,7 +82,7 @@ void Cashier::run()
         if(book==NULL)                                      //isbn does not match inventory, cout invalid
         {
             cout<<"Invalid ISBN"<<endl;
-        }
+        
             /*cout<<"Would you like to try again Y/N? Or, Hit 1 to quit."<<endl;
             char answer2;
             cin>>answer2;
@@ -113,52 +113,32 @@ void Cashier::run()
                                 valid=false;
                             }
                         }while(!valid);
-                    
-                    
-                    
-                    
-                    
- //<< endl; //asking user for quantity
-                        string line;
-                        getline(cin, line);
-                        try
-                        {
-                            x=stoi(line);
-                            if(x<0)
-                            {
-                                cout<<"Invalid"<<endl;
-                                valid=false;
-                            }
-                            else valid=true;
-                        }
-                        catch(exception e)
-                        {
-                            cout<<"Invalid quantity. Need Valid number";
-                            valid=false;
-                        }
-                    }while(!valid);
-
-        
+        }
+    
         else
         {
-        if(book->qty<x)
-        {
-            cout<<"Do not have that many books in stock" <<endl;
-            continue;
+            if(book->qty<x)
+            {
+                cout<<"Do not have that many books in stock" <<endl;
+                continue;
         }
             
             purchasedBooks.push_back(book);
             quantities.push_back(x);
             inventory->remove(book, x);                //removing book from inventory
            
-            cout<<"Would you like to purchase another book? Enter 1 for YES or NO for checking out." << endl;    //asking user if they want to purchase another book
-            cin>>answer;
-            if(answer==0)
+            cout<<"Would you like to purchase another book? Enter Y for yes or N for checking out. Enter quit to quit." << endl;    //asking user if they want to purchase another book
+            //cin>>answer;
+            string answer;
+            getline(cin, answer);
+            if(answer=="N")
             {
                 exit=1;                                              //exiting while loop
             }
-            else continue;
-          
+            if(answer=="Y" || "y")
+                continue;
+          else
+              return;
    }
         
         cout << "Serendipity Book Sellers" <<endl;
