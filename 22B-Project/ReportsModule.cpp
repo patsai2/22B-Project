@@ -10,65 +10,6 @@ using namespace std;
 
 ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
 
-void ReportsModule::selection_sort_qty(vector<const Book*>& books, int size)
-{
-	
-
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++) 
-		{
-		//	temp = cmp_val<int, int>(books[j]->qty, books[least]->qty);
-
-			if (cmp_val<int, int>(books[j]->qty, books[least]->qty) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least]= books[i];
-		books[i] = tmp;
-	}
-}
-void ReportsModule::selection_sort_cost(vector<const Book*>& books, int size)
-{
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++)
-		{
-			
-			if (cmp_val<int, int>(books[j]->cost, books[least]->cost) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least] = books[i];
-		books[i] = tmp;
-	}
-}
-
-void ReportsModule::selection_sort_age(vector<const Book*>& books, int size)
-{
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++)
-		{
-			
-			if (cmp_val<int, int>(books[j]->date, books[least]->date) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least] = books[i];
-		books[i] = tmp;
-	}
-}
-
 
 void ReportsModule::run()
 {
@@ -166,7 +107,7 @@ void ReportsModule::run()
 			cout << left << setw(5) << " " << setw(80) << "Title" << setw(60) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(10) << "ISBN" << endl;
 
 			//cout << "Quantity" << "\t" << "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
-			selection_sort_qty(books, inventory->getSize() );
+			Book::selection_sort_qty(books, inventory->getSize() );
 			for (size_t i = 0; i < books.size(); i++)
 			{
 				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(60) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(10) << books[i]->isbn << endl;
@@ -181,7 +122,7 @@ void ReportsModule::run()
 			books = inventory->getBooks();
 			cout << "Listing by Cost: \n\n";
 			cout << "Cost" << "\t" << "\t" << "\t" << "ISBN" << "\t" << "\t" << "\t" "Title" << "\t" << "\t" << "\t" << "Author" << endl;
-			selection_sort_cost(books, inventory->getSize());
+			Book::selection_sort_cost(books, inventory->getSize());
 			for (size_t i = 0; i < books.size(); i++)
 				cout << books[i]->cost << "\t" << "\t" << "\t"<< books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << " \t" << "\t" << books[i]->author << endl;
 			system("pause");
@@ -191,7 +132,7 @@ void ReportsModule::run()
 		case 6:
 			books = inventory->getBooks();
 			cout << "Listing by Age: \n\n";
-			selection_sort_age(books, inventory->getSize());
+			Book::selection_sort_age(books, inventory->getSize());
 			cout << "Age" << "\t" << "\t" << "\t" "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			for (size_t i = 0; i < books.size(); i++){
 				const Book*book = books[i];
