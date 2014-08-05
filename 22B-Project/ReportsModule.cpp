@@ -39,7 +39,7 @@ void ReportsModule::run()
 		try
 		{
 			x = stoi(choice);
-			if (x<0)
+			if (x<0 || x>7)
 			{
 				cout << "Invalid" << endl;
 				valid = false;
@@ -62,11 +62,11 @@ void ReportsModule::run()
 		case 1:
 			books = inventory->getBooks();
 
-			cout << left << setw(5) << " " << setw(80) << "Title" << setw(60) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(10) << "ISBN" << endl;
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(40) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(15) << "ISBN" << setw(10)<< "Date Added"<<setw(15)<<endl;
 
 			for (size_t i = 0; i < books.size(); i++)
 			{
-				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(60) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(10) << books[i]->isbn << endl;
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(40) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(15) << books[i]->isbn << setw(10) << books[i]->getDateStr() <<setw(15) <<  endl;
 				//system("sleep .3");
 				//system("pause");
 			}
@@ -104,16 +104,13 @@ void ReportsModule::run()
 			books = inventory->getBooks();
 			char a;
 			cout << "Listing by Quantity: \n\n";
-			cout << left << setw(5) << " " << setw(80) << "Title" << setw(60) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(10) << "ISBN" << endl;
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(40) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(15) << "ISBN" << setw(10) << "Date Added" << setw(15) << endl;
 
-			//cout << "Quantity" << "\t" << "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
 			Book::selection_sort_qty(books, inventory->getSize() );
 			for (size_t i = 0; i < books.size(); i++)
 			{
-				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(60) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(10) << books[i]->isbn << endl;
-				//system("pause");
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(40) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(15) << books[i]->isbn << setw(10) << books[i]->getDateStr() << setw(15) << endl;
 			}
-				//cout << books[i]->qty << "\t" << "\t" <<  books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
 			system("pause");
 			break;
 
@@ -121,10 +118,10 @@ void ReportsModule::run()
 		case 5:
 			books = inventory->getBooks();
 			cout << "Listing by Cost: \n\n";
-			cout << "Cost" << "\t" << "\t" << "\t" << "ISBN" << "\t" << "\t" << "\t" "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(40) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(15) << "ISBN" << setw(10) << "Date Added" << setw(15) << endl;
 			Book::selection_sort_cost(books, inventory->getSize());
 			for (size_t i = 0; i < books.size(); i++)
-				cout << books[i]->cost << "\t" << "\t" << "\t"<< books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << " \t" << "\t" << books[i]->author << endl;
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(40) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(15) << books[i]->isbn << setw(10) << books[i]->getDateStr() << setw(15) << endl;
 			system("pause");
 
 			break;
@@ -133,10 +130,9 @@ void ReportsModule::run()
 			books = inventory->getBooks();
 			cout << "Listing by Age: \n\n";
 			Book::selection_sort_age(books, inventory->getSize());
-			cout << "Age" << "\t" << "\t" << "\t" "ISBN" << "\t" << "\t" << "\t" << "Title" << "\t" << "\t" << "\t" << "Author" << endl;
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(40) << "Author" << setw(40) << "Publisher" << setw(10) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(15) << "ISBN" << setw(10) << "Date Added" << setw(15) << endl;
 			for (size_t i = 0; i < books.size(); i++){
-				const Book*book = books[i];
-				cout << ctime(&books[i]->date) << "\t" << "\t" << "\t" <<books[i]->isbn << "\t" << "\t" << books[i]->title << "\t" << "\t" << "\t" << books[i]->author << endl;
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(40) << books[i]->author << setw(40) << books[i]->publisher << setw(10) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(15) << books[i]->isbn << setw(10) << books[i]->getDateStr() << setw(15) << endl;
 			}
 			system("pause");
 				break;
