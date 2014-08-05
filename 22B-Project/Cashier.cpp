@@ -34,6 +34,7 @@ void Cashier::run()
     vector<const Book*> purchasedBooks;
     vector<int> quantities;
     double subt = 0.0;
+    bool valid;
     
     
     cout << "Serendipity Book Sellers" <<endl;
@@ -46,13 +47,29 @@ void Cashier::run()
     while(exit==0)                                              //loop to have user enter another book
     {
         vector<const Book*> books = inventory->getBooks();
-    
         cout<< "Enter ISBN of the book you like to purchase?" << endl;             //asking user for isbn
-        cin >> isbn;
-        cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
-        cin>>x;
-        
-   
+        getline(cin, isbn);
+        do{
+           cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
+            string line;
+            getline(cin, line);
+            try
+            {
+                x=stoi(line);
+                if(x<0)
+                {
+                    cout<<"Invalid"<<endl;
+                    valid=false;
+                }
+                else valid=true;
+            }
+            catch(exception e)
+            {
+                cout<<"Invalid quantity. Need Valid number";
+                valid=false;
+            }
+        }while(!valid);
+    
         const Book *book=inventory->getBook(isbn);
         if(book==NULL)                                      //isbn does not match inventory, cout invalid
         {
