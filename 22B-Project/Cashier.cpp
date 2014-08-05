@@ -29,8 +29,7 @@ void Cashier::run()
     string isbn;
     int x;
     int keepgoing=0;
-    vector<const Book*> purchasedBooks;
-    vector<int> quantities;
+    vector<Book> purchasedBooks;
     double finalTotal=0;
     double subt=0.0;
     double tax=.0862;
@@ -104,9 +103,7 @@ void Cashier::run()
                 continue;
             }
             
-            purchasedBooks.push_back(book);
-            quantities.push_back(x);
-            inventory->remove(book, x);                //removing book from inventory
+            purchasedBooks.push_back(inventory->remove(book, x));
             do{
                 
                 cout<<"Enter 1:To put another book in your cart"<<endl
@@ -156,12 +153,11 @@ void Cashier::run()
     
     for(size_t i=0; i<purchasedBooks.size(); i++)
     {
-        const Book *b=purchasedBooks[i];
-        int q=quantities[i];
-        double total=b->price*x;
+        Book& b=purchasedBooks[i];
+        double total=b.price*x;
         subt=subt+total;
         
-        cout<<"   "<<q<< "  " << b->isbn << "          "<< b->title<<"     "<< b->price<<"     "<< total<<endl;
+        cout<<"   "<<b.qty<< "  " << b.isbn << "          "<< b.title<<"     "<< b.price<<"     "<< total<<endl;
     }       //end of for loop
     
     

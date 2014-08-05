@@ -20,7 +20,7 @@ public:
 	const Book *getBook(std::string isbn);
 	int getSize();
 	void add(Book *book);
-	void remove(const Book *book, int qty);
+	Book remove(const Book *book, int qty);
 };
 
 #endif

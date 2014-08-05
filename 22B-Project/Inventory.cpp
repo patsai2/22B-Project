@@ -4,6 +4,7 @@
 #include <sstream>
 #include <vector>
 #include <ctime>
+#include <iomanip>
 #include "Inventory.h"
 #include "Book.h"
 
@@ -54,7 +55,7 @@ void Inventory::run()
 	vector<const Book*> books = getBooks();
 	for (size_t i = 0; i < books.size(); i++) {
 		const Book *book = books[i];
-		cout << i + 1 << ". $" << book->price << " - " << book->qty << " x "
+		cout << setw(3) << i + 1 << ". $" << fixed << setprecision(2) << setw(6) << book->price << " - " << setw(2) << book->qty << " x "
 				<< book->title << " by " << book->author
 				<< " added on " << book->getDateStr() << endl;
 	}
@@ -80,18 +81,21 @@ void Inventory::add(Book *book)
 	books.push_back(book);
 }
 
-void Inventory::remove(const Book *book, int qty)
+Book Inventory::remove(const Book *book, int qty)
 {
 	for (size_t i = 0; i < books.size(); i++) {
 		if (books[i] == book) {
 			books[i]->qty -= qty;
+
+			Book removed = *books[i];
+			removed.qty = qty;
 
 			if (books[i]->qty <= 0) {
 				delete books[i];
 				books.erase(books.begin() + i);
 			}
 
-			break;
+			return removed;
 		}
 	}
 }
