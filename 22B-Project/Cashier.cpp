@@ -36,7 +36,6 @@ void Cashier::run()
     
     cout <<endl;
     cout << "Serendipity Book Sellers" <<endl;
-    cout << endl;
     //print out time and date
     
     vector<const Book*> books = inventory->getBooks();      //call getBooks function to find book
