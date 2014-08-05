@@ -99,5 +99,6 @@ Book Inventory::remove(const Book *book, int qty)
 			return removed;
 		}
 	}
-    
+
+	return Book();
 }
