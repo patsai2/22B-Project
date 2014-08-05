@@ -5,7 +5,15 @@
 //  Created by Monica Metzger on 7/29/14.
 //  Copyright (c) 2014 Monica Metzger. All rights reserved.
 //
-
+/*
+ Print out Welcome statement with date and time
+ 
+ 
+ 
+ 
+ 
+ 
+ */
 #include "Cashier.h"
 #include <iostream>
 #include "stdio.h"
@@ -46,7 +54,7 @@ void Cashier::run()
     
     while(exit==0)                                              //loop to have user enter another book
     {
-        vector<const Book*> books = inventory->getBooks();
+        vector<const Book*> books = inventory->getBooks();      //call getBooks function to find book
         cout<< "Enter ISBN of the book you like to purchase?" << endl;             //asking user for isbn
         getline(cin, isbn);
         do{
@@ -74,16 +82,62 @@ void Cashier::run()
         if(book==NULL)                                      //isbn does not match inventory, cout invalid
         {
             cout<<"Invalid ISBN"<<endl;
-            cout<<"Would you like to try again Y/N?"<<endl;
+        }
+            /*cout<<"Would you like to try again Y/N? Or, Hit 1 to quit."<<endl;
             char answer2;
             cin>>answer2;
             if(answer2== 'Y' || 'y')
             {
                 continue;
             }
+            else if(
             else
                 exit=1;
-        }
+                    }*/
+                        do{
+                            cout<<"Would you like to try again Y/N? Or, Enter quit to quit."<<endl;
+                            string answer2;
+                            getline(cin, answer2);
+                            try
+                            {
+                                if(answer2 != "Y" || "y" || "quit")
+                                {
+                                    cout<<"Invalid"<<endl;
+                                    valid=false;
+                                }
+                                else valid=true;
+                            }
+                            catch(exception e)
+                            {
+                                cout<<"Invalid quantity. Need Valid number";
+                                valid=false;
+                            }
+                        }while(!valid);
+                    
+                    
+                    
+                    
+                    
+ //<< endl; //asking user for quantity
+                        string line;
+                        getline(cin, line);
+                        try
+                        {
+                            x=stoi(line);
+                            if(x<0)
+                            {
+                                cout<<"Invalid"<<endl;
+                                valid=false;
+                            }
+                            else valid=true;
+                        }
+                        catch(exception e)
+                        {
+                            cout<<"Invalid quantity. Need Valid number";
+                            valid=false;
+                        }
+                    }while(!valid);
+
         
         else
         {
