@@ -26,7 +26,9 @@ int main(int argc, const char * argv[])
 	//module = &reports;
 	//module->run();
 
-	int choice;
+    int x;
+    bool valid;
+	string choice;
 	int forever = 1;
 	while (forever == 1)
 	{
@@ -39,10 +41,29 @@ int main(int argc, const char * argv[])
         cout << "     3. Report Module              " << endl;
         cout << "     4. Exit                       " << endl;
         cout << endl;
-        cout << "     Enter Your Choice: ";
-        cin>>
+        cout << "     Enter Your Choice: " << endl;
         
-		switch (choice)
+        do {
+            cout<<"Enter Your Choice:" << endl; //asking user for quantity
+            getline(cin, choice);
+            try
+            {
+                x=stoi(choice);
+                if(x<0)
+                {
+                    cout<<"Invalid"<<endl;
+                    valid=false;
+                }
+                else valid=true;
+            }
+            catch(exception e)
+            {
+                cout<<"Invalid quantity. Need number 1-4.";
+                valid=false;
+            }
+        }while(!valid);
+        
+		switch (x)
 		{
             case 1:
                 
