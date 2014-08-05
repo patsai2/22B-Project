@@ -45,13 +45,11 @@ void Cashier::run()
     {
         
         cout<<"Please enter the ISBN of the book you would like to purchase."<<endl;
-        cin>>isbn;
-        //getline(cin, isbn);
+        getline(cin, isbn);
         
         do {
             cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
-            cin>>line;
-            //getline(cin, line);
+            getline(cin, line);
             try
             {
                 x=stoi(line);

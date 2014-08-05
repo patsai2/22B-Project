@@ -44,7 +44,7 @@ int main(int argc, const char * argv[])
         cout << "     Enter Your Choice: " << endl;
         
         do {
-            cout<<"Enter Your Choice:" << endl; //asking user for quantity
+            cout<<"Enter Your Choice:" << endl;                     //asking user for quantity
             getline(cin, choice);
             try
             {
