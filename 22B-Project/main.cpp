@@ -41,8 +41,7 @@ int main(int argc, const char * argv[])
         cout << "     3. Report Module              " << endl;
         cout << "     4. Exit                       " << endl;
         cout << endl;
-        cout << "     Enter Your Choice: " << endl;
-        
+    
         do {
             cout<<"Enter Your Choice:" << endl;                     //asking user for quantity
             getline(cin, choice);
