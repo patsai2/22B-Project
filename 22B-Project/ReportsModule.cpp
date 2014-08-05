@@ -64,7 +64,9 @@ void ReportsModule::selection_sort_age(vector<const Book*>& books, int size)
 void ReportsModule::run()
 {
 
-	int choice; 
+	int x;
+	bool valid;
+	string choice;
 	double value;
 	int forever = 1;
 	while (forever == 1){
@@ -81,11 +83,31 @@ void ReportsModule::run()
 	cout << "     7. Return to Main Menu        " << endl;
 
 	cout << endl;
-	cout << "     Enter Your Choice: ";
-	cin >> choice;
+	do {
+		cout << "Enter Your Choice:" << endl; //asking user for quantity
+		getline(cin, choice);
+		try
+		{
+			x = stoi(choice);
+			if (x<0)
+			{
+				cout << "Invalid" << endl;
+				valid = false;
+			}
+			else valid = true;
+		}
+		catch (exception e)
+		{
+			cout << "Invalid quantity. Need number 1-7";
+			valid = false;
+		}
+	} while (!valid);
+
 	system("cls");
+
 	vector <const Book*>books;
-		switch (choice)
+
+		switch (x)
 		{
 		case 1:
 			books = inventory->getBooks();
