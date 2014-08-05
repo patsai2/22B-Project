@@ -74,19 +74,25 @@ void Cashier::run()
             cout<<"Invalid ISBN"<<endl;
             
             do{
-                cout<<"Would you like to try again Y/N? Or, Enter quit to quit."<<endl;
+                cout<<"Would you like to try again Y/N? "<<endl;
                 string answer2;
                 getline(cin, answer2);
                 try
                 {
-                    if(answer2 != "Y" || "y" || "quit")
+                    if(answer2 != "Y" || "y" || "N" || "n")
                     {
                         cout<<"Invalid"<<endl;
                         valid=false;
                     }
+                    if(answer2=="N" || "n")
+                    {
+                        keepgoing=1;
+                        break;
+                    }
                     else valid=true;
                 }
                 catch(exception e)
+
                 {
                     cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. Enter quit to quit the program.";
                     valid=false;
@@ -106,38 +112,32 @@ void Cashier::run()
             purchasedBooks.push_back(inventory->remove(book, x));
             do{
                 
-                cout<<"Enter 1:To put another book in your cart"<<endl
-                <<"Enter 2: To quit out of program and return to main menu."<<endl
-                <<"Enter 3: To check out"<<endl;
-                
-                int answer3;
-                cin>>answer3;
+                cout<<"Enter Y: Add another book to my cart."<<endl
+                <<"Enter N: Check out"<<endl;
+                string answer3;
+                getline(cin, answer3);
                 try
                 {
-                    if(answer3==1)
+                    if(answer3=="y" || "Y")
                     {
                         continue;
                     }
-                    if(answer3==2)
-                    {
-                        return;
-                    }
-                    if(answer3==3)
-                    {
-                        break;
-                    }
-                    if(answer3 != 1 || 2 || 3)
+                    /*  if(answer3=="N" || "n")
+                     {
+                     valid=true;
+                     }*/
+                    if(answer3 != "N" || "n" || "y" || "Y" )
                     {
                         cout<<"Invalid"<<endl;
                         valid=false;
                     }
                     else valid=true;
-                }
+                }                                                               //end of try
                 catch(exception e)
                 {
-                    cout<<"Invalid. Enter 1:To put another book in your cart"<<endl
-                    <<"Enter 2: To quit out of program and return to main menu."<<endl
-                    <<"Enter 3: To check out";
+                    cout<<"Invalid." <<endl;
+                    cout<< "Enter Y: To put another book in your cart."<<endl;
+                    cout<<"Enter N: To check out." <<endl;
                     valid=false;
                 }
             }while(!valid);

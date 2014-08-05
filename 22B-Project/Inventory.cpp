@@ -90,7 +90,8 @@ Book Inventory::remove(const Book *book, int qty)
 			Book removed = *books[i];
 			removed.qty = qty;
 
-			if (books[i]->qty <= 0) {
+			if (books[i]->qty <= 0)
+            {
 				delete books[i];
 				books.erase(books.begin() + i);
 			}
@@ -98,4 +99,5 @@ Book Inventory::remove(const Book *book, int qty)
 			return removed;
 		}
 	}
+    
 }
