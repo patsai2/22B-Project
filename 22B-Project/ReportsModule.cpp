@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<ctime>
+#include<iomanip>
 #include "Inventory.h"
 #include"ReportsModule.h"
 
@@ -89,13 +90,16 @@ void ReportsModule::run()
 		case 1:
 			books = inventory->getBooks();
 
+			//cout << "Book" << "\t\t\t" << "Author" << "\t\t" << "Publisher" << "\t\t" << "Quantity" << "\t" << "Cost $" << "\t" << "Price" << "\t" << "ISBN" << endl;
+
+			cout << left << setw(60) << "Book" << setw(60) << "Author" << setw(30) << "Publisher" << setw(30) << "Quantity" << setw(10) << "Cost $" << setw(10) << "Price $" << setw(10) << "ISBN" << endl;
+
 			for (size_t i = 0; i < books.size(); i++)
 			{
-				cout << "Book: " << books[i]->title << endl;
-				cout << "Author: " << books[i]->author << ",\t" << "Publisher: " << books[i]->publisher << ",\t" << "Quantity in inventory: " << books[i]->qty
-					<< ",\t" << "Cost: $" << books[i]->cost << ",\t" << "Price $" << books[i]->price << ",\t" << "and ISBN: " << books[i]->isbn << "." << endl;
+				cout << left << setw(60) << books[i]->title << setw(60) << books[i]->author << setw(30) << books[i]->publisher << setw(30) << books[i]->qty << setw(10) << books[i]->cost << setw(10) << books[i]->price << setw(10) << books[i]->isbn << endl;
 				cout << endl;
 				//system("sleep .3");
+				//system("pause");
 			}
 			system("pause");	
 			
