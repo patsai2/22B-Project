@@ -91,10 +91,14 @@ void ReportsModule::run()
 
 			for (size_t i = 0; i < books.size(); i++)
 			{
-				cout << "Following is the information about " << books[i]->title << "book:" << endl;
-				cout << "author " << books[i]->author << ", publisher " << books[i]->publisher << ", quantity in inventory " << books[i]->qty 
-					<< ", cost " << books[i]->cost << ", price " << books[i]->price << ", and ISBN " << books[i]->isbn << "." << endl;
+				cout << "Book: " << books[i]->title << endl;
+				cout << "Author: " << books[i]->author << ",\t" << "Publisher: " << books[i]->publisher << ",\t" << "Quantity in inventory: " << books[i]->qty
+					<< ",\t" << "Cost: $" << books[i]->cost << ",\t" << "Price $" << books[i]->price << ",\t" << "and ISBN: " << books[i]->isbn << "." << endl;
+				cout << endl;
+				//system("sleep .3");
 			}
+			system("pause");	
+			
 			break;
 
 		case 2:
@@ -106,7 +110,8 @@ void ReportsModule::run()
 				value += books[i]->cost;
 			}
 			
-			cout << "Inventory's wholesale value is " << value << endl;
+			cout << "Inventory's wholesale value is $" << value << endl;
+			system("pause");
 			break;
 
 		case 3:
@@ -118,7 +123,8 @@ void ReportsModule::run()
 				value += books[i]->price;
 			}
 			
-			cout << "Inventory's retail value is " << value << endl;
+			cout << "Inventory's retail value is $" << value << endl;
+			system("pause");
 			break;
 
 		case 4: 
