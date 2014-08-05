@@ -2,7 +2,6 @@
 #define INVENTORY_H
 
 #include <string>
-#include <fstream>
 #include <vector>
 
 #include "Module.h"
@@ -10,7 +9,7 @@
 
 class Inventory : public Module
 {
-	std::fstream file;
+	std::string filename;
 	std::vector<Book*> books;
 
 public:

@@ -51,7 +51,7 @@ std::ostream& operator<<(std::ostream& os, const Book& book)
 			<< book.cost << '\t'
 			<< book.price << '\t'
 			<< book.getDateStr() << '\t'
-			<< book.qty << endl;
+			<< book.qty;
 	return os;
 }
 

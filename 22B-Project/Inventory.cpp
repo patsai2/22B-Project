@@ -4,14 +4,14 @@
 #include <sstream>
 #include <vector>
 #include <ctime>
-#include <iomanip>
 #include "Inventory.h"
 #include "Book.h"
 
 using namespace std;
 
-Inventory::Inventory(string filename) : file(filename)
+Inventory::Inventory(string filename) : filename(filename)
 {
+	ifstream file(filename);
 	string line;
 	stringstream ss;
 
@@ -26,8 +26,11 @@ Inventory::Inventory(string filename) : file(filename)
 
 Inventory::~Inventory()
 {
-	file.close();
-	for (size_t i = 0; i < books.size(); i++) delete books[i];
+	ofstream file(filename);
+	for (size_t i = 0; i < books.size(); i++) {
+		file << *books[i] << endl;
+		delete books[i];
+	}
 }
 
 void Inventory::run()
@@ -92,14 +95,3 @@ void Inventory::remove(const Book *book, int qty)
 		}
 	}
 }
-
-/*
-int main()
-{
-	Inventory inventory("books.tsv");
-	vector<const Book*> books = inventory.getBooks();
-	for (size_t i = 0; i < books.size(); i++) cout << *(books[i]) << endl;
-	Module *module = &inventory;
-	module->run();
-}
-*/
