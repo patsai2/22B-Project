@@ -4,12 +4,9 @@
 #define CASHIER_H
 
 
-#include <string>
-#include <vector>
-#include "Book.h"
 #include "Module.h"
 #include "Inventory.h"
-#include <ctime>
+
 
 class Cashier: public Module
 {
