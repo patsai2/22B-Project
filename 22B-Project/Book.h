@@ -27,17 +27,16 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Book& book);
 	friend std::istream& operator>>(std::istream& is, Book& book);
 
-	static void selection_sort_qty(std::vector <const Book*>& books, int size);
-	static void selection_sort_cost(std::vector<const Book*>& books, int size);
-	static void selection_sort_age(std::vector<const Book*>& books, int size);
-	template <class T, class E> static T cmp_val(E x, E y)
+	static void selection_sort_qty(std::vector <const Book*>& books);
+	static void selection_sort_cost(std::vector<const Book*>& books);
+	static void selection_sort_age(std::vector<const Book*>& books);
+
+	template<class T> static int cmp_val(T x, T y)
 	{
 		if (x < y) return -1;
 		else if (x > y) return 1;
 		else return 0;
 	}
-
-
 };
 
 #endif
