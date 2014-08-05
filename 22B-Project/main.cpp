@@ -40,8 +40,8 @@ int main(int argc, const char * argv[])
         cout << "     4. Exit                       " << endl;
         cout << endl;
         cout << "     Enter Your Choice: ";
-        cin >> choice;
-
+        cin>>
+        
 		switch (choice)
 		{
             case 1:
