@@ -36,7 +36,7 @@ void ReportsModule::run()
 
 	cout << endl;
 	do {
-		cout << "Enter Your Choice:" << endl; //asking user for quantity
+		cout << "Enter Your Choice: "; //asking user for quantity
 		getline(cin, choice);
 		try
 		{
@@ -50,7 +50,7 @@ void ReportsModule::run()
 		}
 		catch (exception e)
 		{
-			cout << "Invalid quantity. Need number 1-7";
+			cout << "Please enter a value between 1 and 7.";
 			valid = false;
 		}
 	} while (!valid);

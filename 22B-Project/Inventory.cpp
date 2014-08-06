@@ -44,6 +44,7 @@ void Inventory::run()
 	bool exit = false;
 
 	do {
+		system("cls");
 		cout << "      Serendipity Booksellers" << endl;
 		cout << "        Inventory Database" << endl;
 		cout << endl;

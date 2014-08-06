@@ -34,7 +34,7 @@ int main(int argc, const char * argv[])
 	int forever = 1;
 	while (forever == 1)
 	{
-		system("cls");
+        system("cls");
 
         cout << "      Serendipity Booksellers      " << endl;     //35 spaces long
         cout << "             Main Menu             " << endl;
@@ -43,6 +43,7 @@ int main(int argc, const char * argv[])
         cout << "     2. Inventory Database Module  " << endl;
         cout << "     3. Report Module              " << endl;
         cout << "     4. Exit                       " << endl;
+        cout << endl;
         do {
             cout<<"Enter Your Choice: ";
             getline(cin, choice);
@@ -51,14 +52,14 @@ int main(int argc, const char * argv[])
                 x=stoi(choice);
                 if(x < 1 || x > 4)
                 {
-		    cout<<"Invalid choice. Please enter a number between 1 and 4."<<endl;
+		    cout<<"Please enter a value between 1 and 4."<<endl;
                     valid=false;
                 }
                 else valid=true;
             }
             catch(exception e)
             {
-                cout<<"Invalid choice. Please enter a number between 1 and 4."<<endl;
+                cout<<"Please enter a value between 1 and 4."<<endl;
                 valid=false;
             }
         }while(!valid);
