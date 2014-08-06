@@ -86,7 +86,6 @@ void Inventory::run()
 void Inventory::lookupBook()
 {
 
-	}
 }
 
 void Inventory::addBook()
