@@ -1,12 +1,13 @@
-#include<iostream>
-#include<string>
-#include<vector>
-#include<ctime>
-#include<iomanip>
-#include "Inventory.h"
-#include"ReportsModule.h"
-
 #define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <ctime>
+#include <iomanip>
+#include "Inventory.h"
+#include "ReportsModule.h"
+
 using namespace std;
 
 ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}

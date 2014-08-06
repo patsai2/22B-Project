@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Monica Metzger. All rights reserved.
 //
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include "Book.h"
 #include "Inventory.h"

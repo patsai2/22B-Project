@@ -1,10 +1,12 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <string>
 #include <ctime>
 #include <sstream>
 #include <iomanip>
 
 #include "Book.h"
-#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 
 Book::Book() : date(time(0)) {}

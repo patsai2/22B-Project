@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -9,7 +11,7 @@
 #include "Book.h"
 
 using namespace std;
-#define _CRT_SECURE_NO_WARNINGS
+
 Inventory::Inventory(string filename) : filename(filename)
 {
 	ifstream file(filename);
