@@ -132,12 +132,6 @@ void Cashier::run()
           
         }while(!valid);
         
-       /* if(book->qty<x)                                                     //checking to see if the quantity the user has inputed is available in inventory
-        {
-            cout<<"Do not have that many books in stock." <<endl;
-            continue;
-        }*/
-        
         purchasedBooks.push_back(inventory->remove(book, x));                //removing book and quantity from inventory
        
         do{
