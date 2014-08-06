@@ -1,3 +1,50 @@
+//
+//  CIS 22B Group 5 Final Project
+//  Abhinav Anand, Simon Deng, Monica Metzger, and Philip Tsai
+//  Professor Manish Goel
+//
+//  Pseudocode:
+//	print options that reports module will do
+//	get option number from user
+//	if number is not within range tell user to re - enter value
+
+//	case 1(inventory list)
+//	use getBooks() to get the books array by ISBN
+//	display book information(with title truncated to 35 chars)
+//	return to Reports Menu
+
+//	case 2(wholesale value)
+//	use getBooks() to get the books array by ISBN
+//	display book information(with title, and wholesale value)
+//	Calculate total wholesale value and display the value
+
+//	case 3(retail value)
+//	use getBooks() to get the books array by ISBN
+//	display book information(with title, and retail value)
+//	Calculate total retail value and display the value
+
+//	case 4(list by quantity)
+//	use getBooks() to get the books array by ISBN
+//	selection sort books array in order of quantity(descending order)
+//	display book information in order of quantity(with title truncated to 35 chars)
+//	return to Reports Menu
+
+//	case 5(list by cost)
+//	use getBooks() to get the books array by ISBN
+//	selection sort books array in order of cost(ascending order)
+//	display book information in order of cost(with title truncated to 35 chars)
+//	return to Reports Menu
+
+//	case 6(list by age)
+//	use getBooks() to get the books array by ISBN
+//	selection sort books array in order of age(ascending order)
+//	display book information in order of age(with title truncated to 35 chars)
+//	return to Reports Menu
+
+//	case 7(return to main menu)
+//	return to Main Menu
+
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
