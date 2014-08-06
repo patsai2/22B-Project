@@ -88,7 +88,7 @@ void Cashier::run()
 
                     catch(exception e)
                     {
-                        cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. Enter quit to quit the program." << endl;
+                        cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. " << endl;
                         valid=false;
                     }
                 }while(!valid);
