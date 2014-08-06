@@ -1,6 +1,6 @@
 /**
  * Pseudocode:
- *     while "Return to main menu" not selected
+ *     while "Return to the Main Menu" not selected
  *         show inventory module menu
  *         prompt for user selection
  *
