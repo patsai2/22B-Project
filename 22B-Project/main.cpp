@@ -17,7 +17,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	Inventory inventory("/Users/monicametzger/22B-Project/22B-Project/books.tsv");
+	Inventory inventory("books.tsv");
 	ReportsModule reports(inventory);
     Cashier cashier(inventory);
     
