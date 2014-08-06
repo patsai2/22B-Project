@@ -48,7 +48,7 @@ void Cashier::run()
     
     
     cout <<endl;
-    cout << "Serendipity Book Sellers" <<endl;
+
     
     vector<const Book*> books = inventory->getBooks();                //call getBooks function to find book
     while(keepgoing==1)
@@ -56,6 +56,8 @@ void Cashier::run()
         const Book *book = nullptr;
         //do while loop to ask user to input ISBN. Checking to make sure it was a valid input.
         do{
+			system("cls");
+			cout << "Serendipity Book Sellers" << endl;
             cout<<"Please enter the ISBN of the book you would like to purchase."<<endl;    //asking user for input of ISBN
             getline(cin, isbn);
             book=inventory->getBook(isbn);
@@ -87,6 +89,7 @@ void Cashier::run()
                             valid=false;
                         }
                     }
+
                     catch(exception e)
                     {
                         cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. Enter quit to quit the program." << endl;
@@ -106,6 +109,9 @@ void Cashier::run()
        
     
         do {
+			system("cls");
+			cout << "Serendipity Book Sellers" << endl;
+
             cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
             getline(cin, line);
             try                                                            //try catch to make sure User entered valid number
@@ -176,7 +182,8 @@ void Cashier::run()
         break;
     }
 }//end of keepgoing while loop
-    
+system("cls");
+
     time_t timer=time(0);                                                       //variable for time and date
     cout << "Serendipity Book Sellers" <<endl;
     cout << endl;
@@ -206,6 +213,7 @@ void Cashier::run()
     cout<<endl;
     cout<< "Thanks For Shopping at Serendipity." <<endl;
     cout<<endl;
+	system("pause");
     return;
     
 }

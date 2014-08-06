@@ -34,6 +34,7 @@ int main(int argc, const char * argv[])
 	int forever = 1;
 	while (forever == 1)
 	{
+		system("cls");
 
         cout << "      Serendipity Booksellers      " << endl;     //35 spaces long
         cout << "             Main Menu             " << endl;
