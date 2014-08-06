@@ -6,7 +6,7 @@
 
 using namespace std;
 
-Book::Book() {}
+Book::Book() : date(time(0)) {}
 
 Book::Book(string isbn, string title, string author, string publisher,
 		double cost, double price, int qty, time_t date)
