@@ -6,14 +6,14 @@
  Else keep asking for a valid ISBN. 
  Ask User the quantity they want to buy.
  Check to see if the quantity the user wants is in the inventory.
- Try and catch to make sure they are inputing a valid character.
+ Try and catch to make sure they are inputting a valid character.
  If not, ask user to input a new isbn and then a new quantity.
  Ask User if they would like to purchase another book or Check out. 
  Receive input and make sure it is a valid character. 
  If User wants to purchase another book, go back to beginning and ask the user to enter an ISBN.
  If User wants to check out, print out Check out screen.
  For loop print out all the books they want to buy with the quantity, isbn, title, price and total. 
- Caculate total, subtotal, tax, and final total.
+ Calculate total, subtotal, tax, and final total.
  Print out calculations.
  Return to main menu.
  */
