@@ -1,7 +1,6 @@
 #include <string>
 #include <ctime>
 #include <sstream>
-#include <iomanip>
 
 #include "Book.h"
 
@@ -78,64 +77,4 @@ std::istream& operator>>(std::istream& is, Book& book)
 	book.qty = stoi(token);
 
 	return is;
-}
-
-void Book::selection_sort_qty(vector<const Book*>& books)
-{
-	int size = books.size();
-
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++)
-		{
-			if (cmp_val(books[j]->qty, books[least]->qty) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least] = books[i];
-		books[i] = tmp;
-	}
-}
-
-void Book::selection_sort_cost(vector<const Book*>& books)
-{
-	int size = books.size();
-
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++)
-		{
-			if (cmp_val(books[j]->cost, books[least]->cost) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least] = books[i];
-		books[i] = tmp;
-	}
-}
-
-void Book::selection_sort_age(vector<const Book*>& books)
-{
-	int size = books.size();
-
-	for (int i = 0; i < size; i++) {
-		int least = i;
-
-		for (int j = i + 1; j < size; j++)
-		{
-			if (cmp_val(books[j]->date, books[least]->date) < 0) {
-				least = j;
-			}
-		}
-
-		const Book* tmp = books[least];
-		books[least] = books[i];
-		books[i] = tmp;
-	}
 }
