@@ -37,7 +37,7 @@ void Cashier::run()
     string line;
     bool valid=false;
     string isbn;
-    int x;
+    int x=0;
     int keepgoing=1;
     vector<Book> purchasedBooks;
     double finalTotal=0;
