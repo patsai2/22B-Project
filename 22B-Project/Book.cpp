@@ -1,6 +1,7 @@
 #include <string>
 #include <ctime>
 #include <sstream>
+#include <iomanip>
 
 #include "Book.h"
 #define _CRT_SECURE_NO_WARNINGS
@@ -40,6 +41,20 @@ void Book::setDate(string date_str)
 
 	tm time = {0, 0, 0, day, month - 1, year - 1900};
 	date = mktime(&time);
+}
+
+string Book::getCostStr() const
+{
+	stringstream ss;
+	ss << "$" << fixed << setprecision(2) << cost;
+	return ss.str();
+}
+
+string Book::getPriceStr() const
+{
+	stringstream ss;
+	ss << "$" << fixed << setprecision(2) << price;
+	return ss.str();
 }
 
 std::ostream& operator<<(std::ostream& os, const Book& book)

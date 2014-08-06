@@ -22,6 +22,8 @@ public:
 
 	std::string getDateStr() const;
 	void setDate(std::string date_str);
+	std::string getCostStr() const;
+	std::string getPriceStr() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Book& book);
 	friend std::istream& operator>>(std::istream& is, Book& book);
