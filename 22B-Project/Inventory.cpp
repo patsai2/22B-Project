@@ -49,15 +49,26 @@ using namespace std;
 Inventory::Inventory(string filename) : filename(filename)
 {
 	ifstream file(filename);
+
+	if (!file.is_open()) throw "File not found or not readable: " + filename;
+
 	string line;
 	stringstream ss;
 
 	while (getline(file, line)) {
 		ss.clear();
 		ss.str(line);
+
 		Book *book = new Book();
-		ss >> *book;
-		add(book);
+		try {
+			ss >> *book;
+			add(book);
+		} catch (string e) {
+			if (e == "Invalid book") {
+				delete book;
+				throw "Inventory database corrupted";
+			}
+		}
 	}
 }
 

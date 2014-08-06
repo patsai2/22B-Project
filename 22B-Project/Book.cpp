@@ -100,22 +100,26 @@ std::istream& operator>>(std::istream& is, Book& book)
 {
 	string token;
 
-	getline(is, token, '\t');
-	book.isbn = token;
-	getline(is, token, '\t');
-	book.title = token;
-	getline(is, token, '\t');
-	book.author = token;
-	getline(is, token, '\t');
-	book.publisher = token;
-	getline(is, token, '\t');
-	book.cost = stod(token);
-	getline(is, token, '\t');
-	book.price = stod(token);
-	getline(is, token, '\t');
-	book.setDate(token);
-	getline(is, token);
-	book.qty = stoi(token);
+	try {
+		getline(is, token, '\t');
+		book.isbn = token;
+		getline(is, token, '\t');
+		book.title = token;
+		getline(is, token, '\t');
+		book.author = token;
+		getline(is, token, '\t');
+		book.publisher = token;
+		getline(is, token, '\t');
+		book.cost = stod(token);
+		getline(is, token, '\t');
+		book.price = stod(token);
+		getline(is, token, '\t');
+		book.setDate(token);
+		getline(is, token);
+		book.qty = stoi(token);
+	} catch (exception e) {
+		throw "Invalid book";
+	}
 
 	return is;
 }
