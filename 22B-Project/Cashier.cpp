@@ -188,8 +188,8 @@ void Cashier::run()
     cout << endl;
     cout << "Date:"<< ctime(&timer) <<endl;                                     //prints out current data and time
     
-    cout<<" Qty  ISBN         Title                                         Price   Total" <<endl;
-    cout<<"------------------------------------------------------------------------------"<<endl;
+    cout<<" Qty  ISBN       Title                                           Price   Total" <<endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
     
     for(size_t i=0; i<purchasedBooks.size(); i++)                               //for loop to traverse through purchased books
     {                                                                           //printa out all their information
@@ -198,8 +198,8 @@ void Cashier::run()
         double total=b.price*b.qty;                                                 //calculating total
         subt=subt+total;                                                        //calculating subtotal
         
-        cout<<left<<setw(2)<< fixed << setprecision(2) <<b.qty <<"    "<< b.isbn << " "<< setw(40)<<b.title<<setw(9)<<"     $"<< b.price<<setw(3)<<"$" <<total<<endl;                                                       //printing out all information of each book
-    } //end of for loop//3, 11, 7, 6 for total---80 spaces total
+        cout<<" "<<left<<setw(2)<< fixed << setprecision(2) <<b.qty <<"   "<< b.isbn << " "<< setw(40)<<b.title.substr(0, 40)<<setw(8)<<"       $"<< b.price<<setw(2)<<"  $" <<total<<endl;                                                       //printing out all information of each book
+    } //end of for loop
     
     
     finalTotal=(tax*subt)+subt;                                                 //calculating final total with tax*subt
