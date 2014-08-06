@@ -48,14 +48,14 @@ int main(int argc, const char * argv[])
                 x=stoi(choice);
                 if(x < 1 || x > 4)
                 {
-		    cout<<"Invalid choice. Please enter a number between 1 and 4.";
+		    cout<<"Invalid choice. Please enter a number between 1 and 4."<<endl;
                     valid=false;
                 }
                 else valid=true;
             }
             catch(exception e)
             {
-                cout<<"Invalid choice. Please enter a number between 1 and 4.";
+                cout<<"Invalid choice. Please enter a number between 1 and 4."<<endl;
                 valid=false;
             }
         }while(!valid);
