@@ -78,11 +78,17 @@ void ReportsModule::run()
 			books = inventory->getBooks();
 			value = 0;
 			
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(10) << "Cost $" << endl;
+
 			for (size_t i = 0; i < books.size(); i++)
 			{
 				value += books[i]->cost;
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(10) << books[i]->cost << endl;
+				//system("pause");
+
 			}
 			
+			cout << endl;
 			cout << "Inventory's wholesale value is $" << value << endl;
 			system("pause");
 			break;
@@ -90,10 +96,13 @@ void ReportsModule::run()
 		case 3:
 			books = inventory->getBooks();
 			value = 0;
-			
+			cout << left << setw(5) << " " << setw(80) << "Title" << setw(10) << "Price $" << endl;
+
 			for (size_t i = 0; i < books.size(); i++)
 			{
 				value += books[i]->price;
+				cout << left << setw(5) << (i + 1) << setw(80) << books[i]->title << setw(10) << books[i]->price << endl;
+
 			}
 			
 			cout << "Inventory's retail value is $" << value << endl;
@@ -158,7 +167,7 @@ void ReportsModule::selection_sort_qty(vector<const Book*>& books)
 
 		for (int j = i + 1; j < size; j++)
 		{
-			if (cmp_val(books[j]->qty, books[least]->qty) < 0) {
+			if (cmp_val(books[j]->qty, books[least]->qty) > 0) {
 				least = j;
 			}
 		}
@@ -178,7 +187,7 @@ void ReportsModule::selection_sort_cost(vector<const Book*>& books)
 
 		for (int j = i + 1; j < size; j++)
 		{
-			if (cmp_val(books[j]->cost, books[least]->cost) < 0) {
+			if (cmp_val(books[j]->cost, books[least]->cost) > 0) {
 				least = j;
 			}
 		}
