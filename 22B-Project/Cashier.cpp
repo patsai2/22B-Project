@@ -35,7 +35,7 @@ void Cashier::run()
 {
     
     string line;
-    bool valid;
+    bool valid=false;
     string isbn;
     int x;
     int keepgoing=1;
@@ -69,18 +69,24 @@ void Cashier::run()
                     getline(cin, answer2);
                     try                                               //try catch to make sure User entered valid number
                     {
-                        if(answer2=="N" || answer2=="n")
+                        if(answer2=="Y" || answer2=="y")
                         {
+                            keepgoing=1;
                             valid=true;
-                            keepgoing=0;
-                            break;
                         }
-                        if(answer2 != "Y" || answer2!="y" || answer2!="N" || answer2!="n")
+                        else if(answer2=="N" || answer2=="n")
+                        {
+                            keepgoing=0;
+                            valid=true;
+                            
+                        }
+                       // if(answer2 != "Y" && answer2!="y" && answer2!="N" && answer2!="n")
+                        else
                         {
                             cout<<"Invalid"<<endl;
                             valid=false;
                         }
-                        else valid=true;
+                       // else valid=true;
                     }
                     catch(exception e)
                     {
@@ -90,12 +96,13 @@ void Cashier::run()
                 }while(!valid);
             }//end of if statement
             
+            if(keepgoing==0)
+                break;
+            else
+                continue;
         }while(!book);
         
-        if(keepgoing==0)
-        {
-            break;
-        }
+       
     
         do {
             cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
