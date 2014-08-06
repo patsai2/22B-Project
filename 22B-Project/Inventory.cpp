@@ -88,7 +88,70 @@ void Inventory::run()
 
 void Inventory::lookupBook()
 {
+	string line;
+	int choice;
+	bool valid;
 
+	system("cls");
+	cout << "Look up a book by:" << endl;
+	cout << endl;
+	cout << "     1. ISBN" << endl;
+	cout << "     2. Title" << endl;
+	cout << "     3. Author" << endl;
+	cout << "     4. Publisher" << endl;
+	cout << "     5. Cancel" << endl;
+	cout << endl;
+
+	do {
+		try {
+			cout << "Enter Your Choice: ";
+			getline(cin, line);
+			choice = stoi(line);
+			valid = choice > 0 && choice <= 5;
+		} catch (exception e) {
+			valid = false;
+		}
+	} while (!valid && cout << "Please enter a value between 1 and 5." << endl);
+
+	if (choice == 5) return;
+
+	string search;
+
+	cout << "Enter a search term: ";
+	getline(cin, search);
+
+	cout << endl;
+	cout << "Search results for \"" << search << "\":" << endl;
+	cout << "ISBN       Title                       Author     Publisher Cost    Price   Qty" << endl;
+	cout << "===============================================================================" << endl;
+	for (size_t i = 0; i < books.size(); i++) {
+		const Book *book = books[i];
+
+		switch (choice) {
+		case 1:
+			if (book->isbn.find(search) == -1) continue;
+			break;
+		case 2:
+			if (book->title.find(search) == -1) continue;
+			break;
+		case 3:
+			if (book->author.find(search) == -1) continue;
+			break;
+		case 4:
+			if (book->publisher.find(search) == -1) continue;
+			break;
+		}
+
+		cout << book->isbn << " "
+				<< left << setw(27) << book->title.substr(0, 27) << " "
+				<< setw(10) << book->author.substr(0, 10) << " "
+				<< setw(9) << book->publisher.substr(0, 9) << " "
+				<< right << setw(7) << book->getPriceStr() << " "
+				<< setw(7) << book->getCostStr() << " "
+				<< setw(2) << book->qty << endl;
+	}
+	cout << endl;
+	system("pause");
 }
 
 void Inventory::addBook()
