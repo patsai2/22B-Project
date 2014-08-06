@@ -64,7 +64,7 @@
   <ItemGroup>
     <ClCompile Include="Cashier.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ReportsModule.cpp" />
+    <ClCompile Include="Reports.cpp" />
     <ClCompile Include="Book.cpp" />
     <ClCompile Include="Inventory.cpp" />
   </ItemGroup>
@@ -73,7 +73,7 @@
     <ClInclude Include="Cashier.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="ReportsModule.h" />
+    <ClInclude Include="Reports.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="books.tsv" />

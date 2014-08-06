@@ -11,7 +11,7 @@
 #include <iostream>
 #include "Book.h"
 #include "Inventory.h"
-#include "ReportsModule.h"
+#include "Reports.h"
 #include "Cashier.h"
 
 
@@ -20,7 +20,7 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 	Inventory inventory("books.tsv");
-	ReportsModule reports(inventory);
+	Reports reports(inventory);
     Cashier cashier(inventory);
     
 

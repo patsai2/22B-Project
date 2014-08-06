@@ -6,14 +6,14 @@
 #include <ctime>
 #include <iomanip>
 #include "Inventory.h"
-#include "ReportsModule.h"
+#include "Reports.h"
 
 using namespace std;
 
-ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
+Reports::Reports(Inventory& inventory) : inventory(&inventory) {}
 
 
-void ReportsModule::run()
+void Reports::run()
 {
 
 	int x;
@@ -159,7 +159,7 @@ void ReportsModule::run()
 	return;
 }
 
-void ReportsModule::selection_sort_qty(vector<const Book*>& books)
+void Reports::selection_sort_qty(vector<const Book*>& books)
 {
 	int size = books.size();
 
@@ -179,7 +179,7 @@ void ReportsModule::selection_sort_qty(vector<const Book*>& books)
 	}
 }
 
-void ReportsModule::selection_sort_cost(vector<const Book*>& books)
+void Reports::selection_sort_cost(vector<const Book*>& books)
 {
 	int size = books.size();
 
@@ -199,7 +199,7 @@ void ReportsModule::selection_sort_cost(vector<const Book*>& books)
 	}
 }
 
-void ReportsModule::selection_sort_age(vector<const Book*>& books)
+void Reports::selection_sort_age(vector<const Book*>& books)
 {
 	int size = books.size();
 
