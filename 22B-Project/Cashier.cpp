@@ -61,7 +61,7 @@ void Cashier::run()
             
             if(book==NULL)                                            //checking to see if book exists in inventory
             {
-                cout<<"Invalid ISBN"<<endl;
+                cout<<"Invalid ISBN OR Book not in stock."<<endl;
             
                 do{
                     cout<<"Would you like to try again Y/N? "<<endl;  //quering user if they want to enter a valid ISBN again
@@ -190,7 +190,7 @@ void Cashier::run()
     {                                                                           //printa out all their information
 
         Book& b=purchasedBooks[i];
-        double total=b.price*x;                                                 //calculating total
+        double total=b.price*b.qty;                                                 //calculating total
         subt=subt+total;                                                        //calculating subtotal
         
         cout<<setw(2)<< fixed << setprecision(2) <<b.qty <<"    "<< b.isbn << " "<< setw(40)<<b.title<<setw(9)<<"     $"<< b.price<<setw(3)<<"$" <<total<<endl;                                                       //printing out all information of each book
