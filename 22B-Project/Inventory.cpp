@@ -12,6 +12,9 @@
 
 using namespace std;
 
+/**
+ * Inventory module constructor from the filename of the book inventory database
+ */
 Inventory::Inventory(string filename) : filename(filename)
 {
 	ifstream file(filename);
@@ -27,6 +30,9 @@ Inventory::Inventory(string filename) : filename(filename)
 	}
 }
 
+/**
+ * Inventory module destructor
+ */
 Inventory::~Inventory()
 {
 	ofstream file(filename);
@@ -36,6 +42,9 @@ Inventory::~Inventory()
 	}
 }
 
+/**
+ * Runs the Inventory module
+ */
 void Inventory::run()
 {
 	string line;
@@ -86,6 +95,9 @@ void Inventory::run()
 	} while (!exit);
 }
 
+/**
+ * Allows the user to look up a book in the inventory
+ */
 void Inventory::lookupBook()
 {
 	string line;
@@ -154,6 +166,9 @@ void Inventory::lookupBook()
 	system("pause");
 }
 
+/**
+ * Allows the user to add a new book into the inventory
+ */
 void Inventory::addBook()
 {
 	string line;
@@ -246,6 +261,9 @@ void Inventory::addBook()
 	add(book);
 }
 
+/**
+ * Allows the user to edit a book in the inventory
+ */
 void Inventory::editBook()
 {
 	string line;
@@ -402,6 +420,9 @@ void Inventory::editBook()
 	} while (line == "y" || line == "Y");
 }
 
+/**
+ * Allows the user to delete a book from the inventory
+ */
 void Inventory::deleteBook()
 {
 	string isbn;
@@ -422,6 +443,10 @@ void Inventory::deleteBook()
 	} while (!book);
 }
 
+/**
+ * Returns a vector of pointers to the books contained the the inventory
+ * sorted by ISBN
+ */
 vector<const Book*> Inventory::getBooks()
 {
 	vector<const Book*> b;
@@ -429,11 +454,19 @@ vector<const Book*> Inventory::getBooks()
 	return b;
 }
 
+/**
+ * Returns a pointer to the book with the given isbn,
+ * or a null pointer if not found
+ */
 const Book *Inventory::getBook(string isbn)
 {
 	return getEditableBook(isbn);
 }
 
+/**
+ * Returns a pointer to an editable book with the given isbn,
+ * or a null pointer if not found
+ */
 Book *Inventory::getEditableBook(string isbn)
 {
 	int index = binary_search_isbn(isbn, books, 0,
@@ -441,8 +474,15 @@ Book *Inventory::getEditableBook(string isbn)
 	return index < 0 ? NULL : books[index];
 }
 
+/**
+ * Returns the number of books in the inventory
+ */
 int Inventory::getSize() { return books.size(); }
 
+/**
+ * Adds a new book into the inventory.
+ * The book must be dynamically allocated.
+ */
 void Inventory::add(Book *book)
 {
 	for (size_t i = 0; i < books.size(); i++) {
@@ -455,6 +495,9 @@ void Inventory::add(Book *book)
 	books.push_back(book);
 }
 
+/**
+ * Remove the given quantity of a book from the inventory
+ */
 Book Inventory::remove(const Book *book, int qty)
 {
 	for (size_t i = 0; i < books.size(); i++) {
@@ -478,8 +521,8 @@ Book Inventory::remove(const Book *book, int qty)
 }
 
 /**
- * Returns the index of a book in a sorted vector using binary search
- * The starting index is inclusive, while the ending index is exclusive
+ * Returns the index of a book in a sorted vector using binary search.
+ * The starting index is inclusive, while the ending index is exclusive.
  */
 int Inventory::binary_search_isbn(string isbn, const vector<Book*>& books,
 		int start, int end)

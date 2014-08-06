@@ -9,8 +9,14 @@
 
 using namespace std;
 
+/**
+ * Book default constructor
+ */
 Book::Book() : date(time(0)) {}
 
+/**
+* Book constructor with initial values
+*/
 Book::Book(string isbn, string title, string author, string publisher,
 		double cost, double price, int qty, time_t date)
 	: isbn(isbn)
@@ -22,6 +28,9 @@ Book::Book(string isbn, string title, string author, string publisher,
 	, cost(cost)
 	, price(price) {}
 
+/**
+ * Returns the date added formatted as mm/dd/yyyy
+ */
 string Book::getDateStr() const
 {
 	tm *time = localtime(&date);
@@ -29,6 +38,9 @@ string Book::getDateStr() const
 			+ to_string(time->tm_year + 1900);
 }
 
+/**
+ * Sets the date added from a string in the format mm/dd/yyyy
+ */
 void Book::setDate(string date_str)
 {
 	stringstream ss(date_str);
@@ -45,6 +57,9 @@ void Book::setDate(string date_str)
 	date = mktime(&time);
 }
 
+/**
+ * Returns the wholesale cost as a string with a dollar sign and two decimal places
+ */
 string Book::getCostStr() const
 {
 	stringstream ss;
@@ -52,6 +67,9 @@ string Book::getCostStr() const
 	return ss.str();
 }
 
+/**
+ * Returns the retail price as a string with a dollar sign and two decimal places
+ */
 string Book::getPriceStr() const
 {
 	stringstream ss;
@@ -59,6 +77,9 @@ string Book::getPriceStr() const
 	return ss.str();
 }
 
+/**
+ * Overloaded output stream operator to output tab-separated book database entry
+ */
 std::ostream& operator<<(std::ostream& os, const Book& book)
 {
 	os << book.isbn << '\t'
@@ -72,6 +93,9 @@ std::ostream& operator<<(std::ostream& os, const Book& book)
 	return os;
 }
 
+/**
+ *Overloaded input stream operator to read tab-separated book database entry
+ */
 std::istream& operator>>(std::istream& is, Book& book)
 {
 	string token;
