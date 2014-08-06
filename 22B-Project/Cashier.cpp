@@ -1,13 +1,21 @@
-//
-//  Cashier.cpp
-//  ClassProjectCIS22B
-//
-//  Created by Monica Metzger on 7/29/14.
-//  Copyright (c) 2014 Monica Metzger. All rights reserved.
-//
 /*
- Print out Welcome statement with date and time
- 
+ Print out Store Name statement
+ Ask User to enter ISBN number of book they want to purchase
+ do/while loop to ask user the quantity of books they want to purchase
+ Use try catch to make sure they enter valid number
+ Else keep asking for a valid ISBN. 
+ Ask User the quantity they want to buy.
+ Check to see if the quantity the user wants is in the inventory.
+ Try and catch to make sure they are inputing a valid character.
+ If not, ask user to input a new isbn and then a new quantity.
+ Ask User if they would like to purchase another book or Check out. 
+ Receive input and make sure it is a valid character. 
+ If User wants to purchase another book, go back to beginning and ask the user to enter an ISBN.
+ If User wants to check out, print out Check out screen.
+ For loop print out all the books they want to buy with the quantity, isbn, title, price and total. 
+ Caculate total, subtotal, tax, and final total.
+ Print out calculations.
+ Return to main menu.
  */
 
 
@@ -45,21 +53,21 @@ void Cashier::run()
     while(keepgoing==1)
     {
         const Book *book = nullptr;
-        
+        //do while loop to ask user to input ISBN. Checking to make sure it was a valid input.
         do{
-            cout<<"Please enter the ISBN of the book you would like to purchase."<<endl;
+            cout<<"Please enter the ISBN of the book you would like to purchase."<<endl;    //asking user for input of ISBN
             getline(cin, isbn);
             book=inventory->getBook(isbn);
             
-            if(book==NULL)                              //checking to see if book exists
+            if(book==NULL)                              //checking to see if book exists in inventory
             {
                 cout<<"Invalid ISBN"<<endl;
             
                 do{
-                    cout<<"Would you like to try again Y/N? "<<endl;
+                    cout<<"Would you like to try again Y/N? "<<endl;        //asking user if they want to enter a valid ISBN again
                     string answer2;
                     getline(cin, answer2);
-                    try
+                    try                                     //try catch to make sure User entered valid number
                     {
                         if(answer2=="N" || answer2=="n")
                         {
@@ -76,7 +84,7 @@ void Cashier::run()
                     }
                     catch(exception e)
                     {
-                        cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. Enter quit to quit the program.";
+                        cout<<"Invalid. Please enter Y to enter another ISBN or N to check out. Enter quit to quit the program." << endl;
                         valid=false;
                     }
                 }while(!valid);
@@ -92,10 +100,11 @@ void Cashier::run()
         do {
             cout<<"How many books with that title would you like to purchase?" << endl; //asking user for quantity
             getline(cin, line);
-            try
+            try                                     //try catch to make sure User entered valid number
             {
-                x=stoi(line);
-                if(x<0)
+                x=stoi(line);                       //receive string. convert string to integer.
+                if(x<0)                             //Test on integer
+
                 {
                     cout<<"Invalid"<<endl;
                     valid=false;
@@ -104,33 +113,33 @@ void Cashier::run()
             }
             catch(exception e)
             {
-                cout<<"Invalid quantity. Need Valid number";
+                cout<<"Invalid quantity. Please enter valid number. " << endl;
                 valid=false;
             }
         }while(!valid);
         
-        if(book->qty<x)
+        if(book->qty<x)                             //checking to see if the quantity the user has inputed is available in inventory
         {
-            cout<<"Do not have that many books in stock" <<endl;
+            cout<<"Do not have that many books in stock." <<endl;
             continue;
         }
         
-        purchasedBooks.push_back(inventory->remove(book, x));
+        purchasedBooks.push_back(inventory->remove(book, x));           //removing book and quantity from inventory
        
         do{
-            cout<<"Enter Y: Add another book to my cart."<<endl;
+            cout<<"Enter Y: Add another book to my cart."<<endl;        //asking user if they want to purchase another book or check out.
             cout<<"Enter N: Check out"<<endl;
             string answer3;
             getline(cin, answer3);
-            try
+            try                                                         //try and catch to see if answer is valid
             {
-                if(answer3=="y" || answer3=="Y")
+                if(answer3=="y" || answer3=="Y")            //If aswered Y, ask again
                 {
                     keepgoing=1;
                     valid=true;
                     break;
                 }
-                if(answer3=="N" || answer3=="n")
+                if(answer3=="N" || answer3=="n")            //If answered N, check out
                 {
                     valid=true;
                     keepgoing=0;
@@ -140,7 +149,7 @@ void Cashier::run()
                     cout<<"Invalid"<<endl;
                     valid=false;
                 }
-            }                                                               //end of try
+            }                                                //end of try
             catch(exception e)
             {
                 cout<<"Invalid." <<endl;
@@ -150,42 +159,43 @@ void Cashier::run()
             }
         }while(!valid);
         
-    if(keepgoing==1)
+    if(keepgoing==1)                            //go back up to top of loop
     {
         continue;
     }
-    if(keepgoing==0)
+    if(keepgoing==0)                            //break loop
     {
         break;
     }
 }//end of keepgoing while loop
     
-    time_t timer=time(0);
+    time_t timer=time(0);                               //variable for time and date
     cout << "Serendipity Book Sellers" <<endl;
     cout << endl;
-    cout << "Date:"<< ctime(&timer) <<endl;                             //FIX DATE
+    cout << "Date:"<< ctime(&timer) <<endl;            //prints out current data and time
     
-    cout<<"Qty     ISBN                 Title                       Price         Total" <<endl;
-    cout<<"----------------------------------------------------------------------"<<endl;
+    cout<<" Qty  ISBN         Title                                         Price   Total" <<endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
     
-    for(size_t i=0; i<purchasedBooks.size(); i++)
+    for(size_t i=0; i<purchasedBooks.size(); i++)       //for loop to traverse through purchased books and print out all their information
     {
         Book& b=purchasedBooks[i];
-        double total=b.price*x;
-        subt=subt+total;
+        double total=b.price*x;                         //calculating total
+        subt=subt+total;                                //calculating subtotal
         
-        cout<<setw(2)<<b.qty <<" "<< b.isbn << " "<< setw(53)<<b.title<<setw(12)<< b.price<<setw(6)<< total<<endl;
+        cout<<setw(2)<< fixed << setprecision(2) <<b.qty <<"    "<< b.isbn << " "<< setw(40)<<b.title<<setw(9)<<"     $"<< b.price<<setw(3)<<"$" <<total<<endl;      //printing out all information of each book
     } //end of for loop//3, 11, 7, 6 for total---80 spaces total
     
     
     finalTotal=(tax*subt)+subt;                                 //calculating final total with tax*subt
     cout<< endl <<endl;
+    //printing out subtotal, tax, final total
     cout<<"Subtotal: $" << fixed << setprecision(2) << subt << endl;
     cout<<"Tax: $" << (tax*subt) << endl;
     cout<<"Final Total: $" << finalTotal << endl;
     cout<<endl;
-    cout<< "Thanks For Shopping at Serendipity.";
-    
+    cout<< "Thanks For Shopping at Serendipity." <<endl;
+    cout<<endl;
     return;
     
 }
