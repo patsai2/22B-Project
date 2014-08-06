@@ -24,6 +24,12 @@ public:
 
 	static int binary_search_isbn(std::string isbn,
 			const std::vector<Book*>& books, int start, int end);
+
+private:
+	void lookupBook();
+	void addBook();
+	void editBook();
+	void deleteBook();
 };
 
 #endif

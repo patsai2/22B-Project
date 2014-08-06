@@ -37,29 +37,68 @@ Inventory::~Inventory()
 void Inventory::run()
 {
 	string line;
+	int choice;
+	bool valid;
+	bool exit = false;
 
-	cout << "      Serendipity Booksellers" << endl;
-	cout << "        Inventory Database" << endl;
-	cout << endl;
-	cout << "     1. Look Up a Book" << endl;
-	cout << "     2. Add a Book" << endl;
-	cout << "     3. Edit a Book's Record" << endl;
-	cout << "     4. Delete a Book" << endl;
-	cout << "     5. Return to the Main Menu" << endl;
-	cout << endl;
-	cout << "     Enter Your Choice: ";
-	getline(cin, line);
+	do {
+		cout << "      Serendipity Booksellers" << endl;
+		cout << "        Inventory Database" << endl;
+		cout << endl;
+		cout << "     1. Look Up a Book" << endl;
+		cout << "     2. Add a Book" << endl;
+		cout << "     3. Edit a Book's Record" << endl;
+		cout << "     4. Delete a Book" << endl;
+		cout << "     5. Return to the Main Menu" << endl;
+		cout << endl;
 
-	cout << endl;
-	cout << "Books: " << endl;
-	vector<const Book*> books = getBooks();
-	for (size_t i = 0; i < books.size(); i++) {
-		const Book *book = books[i];
-		cout << setw(3) << i + 1 << ". $" << fixed << setprecision(2) << setw(6) << book->price << " - " << setw(2) << book->qty << " x "
-				<< book->title << " by " << book->author
-				<< " added on " << book->getDateStr() << endl;
+		do {
+			try {
+				cout << "Enter Your Choice: ";
+				getline(cin, line);
+				choice = stoi(line);
+				valid = choice > 0 && choice <= 5;
+			} catch (exception e) {
+				valid = false;
+			}
+		} while (!valid && cout << "Please enter a value between 1 and 5." << endl);
+
+		switch (choice) {
+		case 1:
+			lookupBook();
+			break;
+		case 2:
+			addBook();
+			break;
+		case 3:
+			editBook();
+			break;
+		case 4:
+			deleteBook();
+			break;
+		case 5:
+			exit = true;
+			break;
+		}
+	} while (!exit);
+}
+
+void Inventory::lookupBook()
+{
+
 	}
-	cout << endl;
+}
+
+void Inventory::addBook()
+{
+}
+
+void Inventory::editBook()
+{
+}
+
+void Inventory::deleteBook()
+{
 }
 
 vector<const Book*> Inventory::getBooks()
