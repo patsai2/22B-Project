@@ -60,7 +60,7 @@ void Cashier::run()
             
             if(book==NULL)                                            //checking to see if book exists in inventory
             {
-                cout<<"Invalid ISBN OR Book not in stock."<<endl;
+                cout<<"Invalid ISBN OR Book not in stock. "<<endl;
             
                 do{
                     cout<<"Would you like to try again Y/N? "<<endl;  //quering user if they want to enter a valid ISBN again
@@ -105,7 +105,7 @@ void Cashier::run()
        
     
         do {
-            cout<<"How many books with that ISBN would you like to purchase?"; //asking user for quantity
+            cout<<"How many books with that ISBN would you like to purchase? "; //asking user for quantity
             getline(cin, line);
             try                                                            //try catch to make sure User entered valid number
             {
@@ -118,7 +118,7 @@ void Cashier::run()
                 }
                 if(book->qty<x)                                            //checking to see if the quantity the user has inputed is available in inventory
                 {
-                    cout<<"Do not have that many books in stock." <<endl;
+                    cout<<"Do not have that many books in stock. " <<endl;
                     valid=false;
                 }
                 else valid=true;
@@ -134,7 +134,7 @@ void Cashier::run()
         purchasedBooks.push_back(inventory->remove(book, x));                //removing book and quantity from inventory
        
         do{
-            cout<<"Enter Y: Add another book to my cart."<<endl;             //asking user if they want to purchase another book or check out.
+            cout<<"Enter Y: Add another book to my cart. "<<endl;             //asking user if they want to purchase another book or check out.
             cout<<"Enter N: Check out"<<endl;
             string answer3;
             getline(cin, answer3);
@@ -159,9 +159,9 @@ void Cashier::run()
             }                                                                   //end of try
             catch(exception e)
             {
-                cout<<"Invalid." <<endl;
-                cout<< "Enter Y: To put another book in your cart."<<endl;
-                cout<<"Enter N: To check out." <<endl;
+                cout<<"Invalid. " <<endl;
+                cout<< "Enter Y: To put another book in your cart. "<<endl;
+                cout<<"Enter N: To check out. " <<endl;
                 valid=false;
             }
         }while(!valid);
