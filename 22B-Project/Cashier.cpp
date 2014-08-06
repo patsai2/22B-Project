@@ -192,7 +192,7 @@ void Cashier::run()
         double total=b.price*b.qty;                                                 //calculating total
         subt=subt+total;                                                        //calculating subtotal
         
-        cout<<" "<<left<<setw(2)<< fixed << setprecision(2) <<b.qty <<"   "<< b.isbn << " "<< setw(40)<<b.title.substr(0, 40)<<setw(8)<<"       $"<< b.price<<setw(2)<<"  $" <<total<<endl;                                                       //printing out all information of each book
+        cout<<" "<<left<<setw(2)<< fixed << setprecision(2) <<b.qty <<"   "<< b.isbn << " "<< setw(40)<<b.title.substr(0, 45)<<setw(8)<<"       $"<< b.price<<setw(2)<<"  $" <<total<<endl;                                                       //printing out all information of each book
     } //end of for loop
     
     
