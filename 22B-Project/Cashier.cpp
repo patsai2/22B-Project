@@ -80,13 +80,11 @@ void Cashier::run()
                             valid=true;
                             
                         }
-                       // if(answer2 != "Y" && answer2!="y" && answer2!="N" && answer2!="n")
                         else
                         {
                             cout<<"Invalid"<<endl;
                             valid=false;
                         }
-                       // else valid=true;
                     }
                     catch(exception e)
                     {
@@ -118,6 +116,11 @@ void Cashier::run()
                     cout<<"Invalid"<<endl;
                     valid=false;
                 }
+                if(book->qty<x)                                            //checking to see if the quantity the user has inputed is available in inventory
+                {
+                    cout<<"Do not have that many books in stock." <<endl;
+                    valid=false;
+                }
                 else valid=true;
             }
             catch(exception e)
@@ -125,13 +128,14 @@ void Cashier::run()
                 cout<<"Invalid quantity. Please enter valid number. " << endl;
                 valid=false;
             }
+          
         }while(!valid);
         
-        if(book->qty<x)                                                     //checking to see if the quantity the user has inputed is available in inventory
+       /* if(book->qty<x)                                                     //checking to see if the quantity the user has inputed is available in inventory
         {
             cout<<"Do not have that many books in stock." <<endl;
             continue;
-        }
+        }*/
         
         purchasedBooks.push_back(inventory->remove(book, x));                //removing book and quantity from inventory
        
