@@ -1,10 +1,15 @@
 //
-//  main.cpp
-//  ClassProjectCIS22B
+//  CIS 22B Group 5 Final Project
+//  Abhinav Anand, Simon Deng, Monica Metzger, and Philip Tsai
+//  Professor Manish Goel
 //
-//  Created by Monica Metzger on 7/23/14.
-//  Copyright (c) 2014 Monica Metzger. All rights reserved.
+//  Pseudocode:
+//      initialize modules
 //
+//      while "Exit" not selected
+//          show main menu
+//          prompt for user selection
+//          run selected module
 
 #define _CRT_SECURE_NO_WARNINGS
 

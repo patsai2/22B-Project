@@ -1,3 +1,34 @@
+/**
+ * Pseudocode:
+ *     while "Return to main menu" not selected
+ *         show inventory module menu
+ *         prompt for user selection
+ *
+ *         if "Look Up a Book" selected
+ *             show available values to search by
+ *             prompt for value to search by
+ *             prompt for search term
+ *             list books in inventory for which selected value contains search term
+ *
+ *         else if "Add a Book" selected
+ *             confirm user wants to add a book
+ *             prompt for and validate each value of the new book
+ *             add book into inventory
+ *
+ *         else if "Edit a Book's Record" selected
+ *             prompt for isbn of book to edit
+ *             find book by isbn in inventory
+ *             show available values to edit
+ *             prompt for value to edit
+ *             show current value
+ *             prompt for new value
+ *             ask if user would like to edit another value
+ *
+ *         else if "Delete a Book" selected
+ *             prompt for isbn of book to delete
+ *             delete book from inventory
+ */
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
@@ -262,7 +293,7 @@ void Inventory::addBook()
 }
 
 /**
- * Allows the user to edit a book in the inventory
+ * Allows the user to edit a book's record in the inventory
  */
 void Inventory::editBook()
 {
