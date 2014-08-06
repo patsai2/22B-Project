@@ -483,6 +483,8 @@ void Inventory::deleteBook()
 			if (line != "y" && line != "Y") return;
 		}
 	} while (!book);
+
+	remove(book, book->qty);
 }
 
 /**
