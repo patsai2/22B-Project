@@ -21,6 +21,9 @@ public:
 	int getSize();
 	void add(Book *book);
 	Book remove(const Book *book, int qty);
+
+	static int binary_search_isbn(std::string isbn,
+			const std::vector<Book*>& books, int start, int end);
 };
 
 #endif

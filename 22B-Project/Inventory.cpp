@@ -71,7 +71,9 @@ vector<const Book*> Inventory::getBooks()
 
 const Book* Inventory::getBook(string isbn)
 {
-	return books[0];
+	int index = binary_search_isbn(isbn, books, 0,
+			static_cast<int>(books.size()));
+	return index < 0 ? NULL : books[index];
 }
 
 int Inventory::getSize() { return books.size(); }
@@ -108,4 +110,27 @@ Book Inventory::remove(const Book *book, int qty)
 	}
 
 	return Book();
+}
+
+/**
+ * Returns the index of a book in a sorted vector using binary search
+ * The starting index is inclusive, while the ending index is exclusive
+ */
+int Inventory::binary_search_isbn(string isbn, const vector<Book*>& books,
+		int start, int end)
+{
+	if (start == end) return -1;
+
+	int mid = (start + end) / 2;
+	int index;
+
+	if (books[mid]->isbn == isbn) {
+		index = mid;
+	} else if (books[mid]->isbn > isbn) {
+		index = binary_search_isbn(isbn, books, start, mid);
+	} else {
+		index = binary_search_isbn(isbn, books, mid + 1, end);
+	}
+
+	return index;
 }
