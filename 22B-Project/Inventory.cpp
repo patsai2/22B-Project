@@ -90,6 +90,94 @@ void Inventory::lookupBook()
 
 void Inventory::addBook()
 {
+	string line;
+	bool valid;
+
+	cout << "Add a new book? (y/n): ";
+	getline(cin, line);
+	if (line != "y" && line != "Y") return;
+
+	Book *book = new Book();
+
+	// isbn
+	do {
+		cout << "Enter the ISBN: ";
+		getline(cin, line);
+		if (line.length() != 10) {
+			valid = false;
+		} else {
+			book->isbn = line;
+			valid = true;
+		}
+	} while (!valid && cout << "Please enter a 10-digit ISBN." << endl);
+
+	// title
+	cout << "Enter the title: ";
+	getline(cin, book->title);
+
+	// author
+	cout << "Enter the author: ";
+	getline(cin, book->author);
+
+	// publisher
+	cout << "Enter the publisher: ";
+	getline(cin, book->publisher);
+
+	// cost
+	do {
+		try {
+			cout << "Enter the wholesale cost: $";
+			getline(cin, line);
+
+			double cost = stod(line);
+			if (cost <= 0) {
+				valid = false;
+			} else {
+				book->cost = cost;
+				valid = true;
+			}
+		} catch (exception e) {
+			valid = false;
+		}
+	} while (!valid && cout << "Please enter a valid cost." << endl);
+
+	// price
+	do {
+		try {
+			cout << "Enter the retail price: $";
+			getline(cin, line);
+
+			double price = stod(line);
+			if (price <= 0) {
+				valid = false;
+			} else {
+				book->price = price;
+				valid = true;
+			}
+		} catch (exception e) {
+			valid = false;
+		}
+	} while (!valid && cout << "Please enter a valid price." << endl);
+
+	// quantity
+	do {
+		try {
+			cout << "Enter the quantity: ";
+			getline(cin, line);
+
+			int qty = stoi(line);
+			if (qty <= 0) {
+				valid = false;
+			} else {
+				book->qty = qty;
+				valid = true;
+			}
+		} catch (exception e) {
+			valid = false;
+		}
+	} while (!valid && cout << "Please enter a valid quantity." << endl);
+
+	add(book);
 }
 
 void Inventory::editBook()
