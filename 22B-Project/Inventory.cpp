@@ -78,6 +78,13 @@ int Inventory::getSize() { return books.size(); }
 
 void Inventory::add(Book *book)
 {
+	for (size_t i = 0; i < books.size(); i++) {
+		if (book->isbn < books[i]->isbn) {
+			books.insert(books.begin() + i, book);
+			return;
+		}
+	}
+
 	books.push_back(book);
 }
 
