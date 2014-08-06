@@ -188,6 +188,22 @@ void Inventory::editBook()
 
 void Inventory::deleteBook()
 {
+	string isbn;
+	const Book *book;
+
+	do {
+		cout << "Enter the ISBN of the book you would like to delete: ";
+		getline(cin, isbn);
+		book = getBook(isbn);
+
+		if (!book) {
+			string line;
+			cout << "ISBN not found. Would you like to try another ISBN? (y/n): ";
+			getline(cin, line);
+
+			if (line != "y" && line != "Y") return;
+		}
+	} while (!book);
 }
 
 vector<const Book*> Inventory::getBooks()
