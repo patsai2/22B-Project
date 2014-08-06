@@ -41,21 +41,21 @@ int main(int argc, const char * argv[])
         cout << "     3. Report Module              " << endl;
         cout << "     4. Exit                       " << endl;
         do {
-            cout<<"Enter Your Choice:" << endl;                     //asking user for quantity
+            cout<<"Enter Your Choice: ";
             getline(cin, choice);
             try
             {
                 x=stoi(choice);
-                if(x<0)
+                if(x < 1 || x > 4)
                 {
-                    cout<<"Invalid"<<endl;
+		    cout<<"Invalid choice. Please enter a number between 1 and 4.";
                     valid=false;
                 }
                 else valid=true;
             }
             catch(exception e)
             {
-                cout<<"Invalid quantity. Need number 1-4.";
+                cout<<"Invalid choice. Please enter a number between 1 and 4.";
                 valid=false;
             }
         }while(!valid);
