@@ -102,6 +102,8 @@ void Cashier::run()
                 continue;
         }while(!book);
         
+        if(keepgoing==0)
+            break;
        
     
         do {
