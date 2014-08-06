@@ -27,6 +27,7 @@
 #include <iomanip>
 #include <ctime>
 
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 Cashier::Cashier(Inventory &inventory): inventory(&inventory){}

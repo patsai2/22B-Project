@@ -3,7 +3,7 @@
 #include <sstream>
 
 #include "Book.h"
-
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 Book::Book() : date(time(0)) {}

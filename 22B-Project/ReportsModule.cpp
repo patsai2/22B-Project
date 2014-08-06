@@ -6,6 +6,7 @@
 #include "Inventory.h"
 #include"ReportsModule.h"
 
+#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 ReportsModule::ReportsModule(Inventory& inventory) : inventory(&inventory) {}
