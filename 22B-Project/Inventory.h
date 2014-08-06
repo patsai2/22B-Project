@@ -30,6 +30,7 @@ private:
 	void addBook();
 	void editBook();
 	void deleteBook();
+	Book *getEditableBook(std::string isbn);
 };
 
 #endif

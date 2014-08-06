@@ -248,6 +248,158 @@ void Inventory::addBook()
 
 void Inventory::editBook()
 {
+	string line;
+	bool valid;
+	int choice;
+	Book *book;
+
+	do {
+		cout << "Enter the ISBN of the book you would like to edit: ";
+		getline(cin, line);
+		book = getEditableBook(line);
+
+		if (!book) {
+			cout << "ISBN not found. Would you like to try another ISBN? (y/n): ";
+			getline(cin, line);
+
+			if (line != "y" && line != "Y") return;
+		}
+	} while (!book);
+
+	do {
+		system("cls");
+
+		cout << endl;
+		cout << "ISBN: " << book->isbn << endl;
+		cout << "Which value would you like to edit?" << endl;
+		cout << endl;
+		cout << "    1. ISBN" << endl;
+		cout << "    2. Title" << endl;
+		cout << "    3. Author" << endl;
+		cout << "    4. Publisher" << endl;
+		cout << "    5. Wholesale cost" << endl;
+		cout << "    6. Retail price" << endl;
+		cout << "    7. Quantity" << endl;
+		cout << "    8. Cancel" << endl;
+		cout << endl;
+
+		do {
+			try {
+				cout << "Enter Your Choice: ";
+				getline(cin, line);
+				choice = stoi(line);
+				valid = choice > 0 && choice <= 8;
+			} catch (exception e) {
+				valid = false;
+			}
+		} while (!valid && cout << "Please enter a value between 1 and 8." << endl);
+
+		if (choice == 8) return;
+
+		switch (choice) {
+		// isbn
+		case 1:
+			cout << "Current ISBN: " << book->isbn << endl;
+			do {
+				cout << "Enter a new ISBN: ";
+				getline(cin, line);
+				if (line.length() != 10) {
+					valid = false;
+				} else {
+					book->isbn = line;
+					valid = true;
+				}
+			} while (!valid && cout << "Please enter a 10-digit ISBN." << endl);
+			break;
+
+		// title
+		case 2:
+			cout << "Current title: " << book->title << endl;
+			cout << "Enter a new title: ";
+			getline(cin, book->title);
+			break;
+
+		// author
+		case 3:
+			cout << "Current author: "  << book->author << endl;
+			cout << "Enter a new author: ";
+			getline(cin, book->author);
+			break;
+
+		// publisher
+		case 4:
+			cout << "Current publisher: " << book->publisher << endl;
+			cout << "Enter a new publisher: ";
+			getline(cin, book->publisher);
+			break;
+
+		// cost
+		case 5:
+			cout << "Current wholesale cost: " << book->getCostStr() << endl;
+			do {
+				try {
+					cout << "Enter a new wholesale cost: $";
+					getline(cin, line);
+
+					double cost = stod(line);
+					if (cost <= 0) {
+						valid = false;
+					} else {
+						book->cost = cost;
+						valid = true;
+					}
+				} catch (exception e) {
+					valid = false;
+				}
+			} while (!valid && cout << "Please enter a valid cost." << endl);
+			break;
+
+		// price
+		case 6:
+			cout << "Current retail price: " << book->getPriceStr() << endl;
+			do {
+				try {
+					cout << "Enter a new retail price: $";
+					getline(cin, line);
+
+					double price = stod(line);
+					if (price <= 0) {
+						valid = false;
+					} else {
+						book->price = price;
+						valid = true;
+					}
+				} catch (exception e) {
+					valid = false;
+				}
+			} while (!valid && cout << "Please enter a valid price." << endl);
+			break;
+
+		// quantity
+		case 7:
+			do {
+				cout << "Current quantity: " << book->qty << endl;
+				try {
+					cout << "Enter a new quantity: ";
+					getline(cin, line);
+
+					int qty = stoi(line);
+					if (qty <= 0) {
+						valid = false;
+					} else {
+						book->qty = qty;
+						valid = true;
+					}
+				} catch (exception e) {
+					valid = false;
+				}
+			} while (!valid && cout << "Please enter a valid quantity." << endl);
+			break;
+		}
+
+		cout << "Edit another value? (y/n): ";
+		getline(cin, line);
+	} while (line == "y" || line == "Y");
 }
 
 void Inventory::deleteBook()
@@ -277,7 +429,12 @@ vector<const Book*> Inventory::getBooks()
 	return b;
 }
 
-const Book* Inventory::getBook(string isbn)
+const Book *Inventory::getBook(string isbn)
+{
+	return getEditableBook(isbn);
+}
+
+Book *Inventory::getEditableBook(string isbn)
 {
 	int index = binary_search_isbn(isbn, books, 0,
 			static_cast<int>(books.size()));
